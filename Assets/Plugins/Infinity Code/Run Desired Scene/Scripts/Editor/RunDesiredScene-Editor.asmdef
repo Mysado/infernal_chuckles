@@ -1,0 +1,18 @@
+{
+    "name": "RunDesiredScene-Editor",
+    "rootNamespace": "InfinityCode.RunDesiredScene",
+    "references": [
+        "GUID:426cef9984f062f488f5ff24ccfe441e"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
