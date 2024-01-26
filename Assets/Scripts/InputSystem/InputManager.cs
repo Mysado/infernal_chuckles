@@ -1,0 +1,21 @@
+using UnityEngine;
+
+public class InputManager : MonoBehaviour
+{
+    private InputActions input;
+
+    public float Horizontal => horizontal;
+
+    private float horizontal;
+
+    private void Awake()
+    {
+        input = new InputActions();
+        input.Player.Enable();
+    }
+
+    private void Update()
+    {
+        horizontal = input.Player.Movement.ReadValue<Vector2>().x;
+    }
+}
