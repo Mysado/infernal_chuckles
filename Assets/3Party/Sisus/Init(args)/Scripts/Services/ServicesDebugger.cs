@@ -19,7 +19,7 @@ namespace Sisus.Init.Internal
 
 		private List<object> services = new List<object>();
 
-		protected override void Init(List<object> services) => this.services = services;
+		protected override void Init(List<object> inputManager) => this.services = inputManager;
 
 		private void Awake() => EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
 		private void OnDestroy() => EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;

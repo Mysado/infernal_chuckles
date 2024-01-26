@@ -59,7 +59,7 @@ namespace Sisus.Init
 		/// </para>
 		/// </summary>
 		/// <param name="argument"> Object that this component depends on. </param>
-		protected abstract void Init(TArgument argument);
+		protected abstract void Init(TArgument inputManager);
 
 		/// <summary>
 		/// Assigns an argument received during initialization to a field or property by the <paramref name="memberName">given name</paramref>.
@@ -217,14 +217,14 @@ namespace Sisus.Init
 		}
 
 		/// <inheritdoc/>
-		void IInitializable<TArgument>.Init(TArgument argument)
+		void IInitializable<TArgument>.Init(TArgument inputManager)
         {
 			#if DEBUG
 			initializing = true;
-			ValidateArgument(argument);
+			ValidateArgument(inputManager);
 			#endif
 
-			Init(argument);
+			Init(inputManager);
 
 			#if DEBUG
 			initializing = false;

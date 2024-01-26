@@ -1,5 +1,7 @@
+using Sisus.Init;
 using UnityEngine;
 
+[Service]
 public class InputManager : MonoBehaviour
 {
     private InputActions input;

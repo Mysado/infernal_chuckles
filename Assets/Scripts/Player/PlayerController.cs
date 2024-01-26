@@ -1,18 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using Sisus.Init;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour<InputManager>
 {
-    // Start is called before the first frame update
-    void Start()
+    private InputManager inputManager;
+    
+    protected override void Init(InputManager inputManager)
     {
-        
+        this.inputManager = inputManager;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
