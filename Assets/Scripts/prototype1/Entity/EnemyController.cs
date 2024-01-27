@@ -12,11 +12,18 @@
         [SerializeField] private float shieldOffsetX;
         
         private Transform target;
+        private Rigidbody rigidbody;
+        private Collider collider;
+
+        public bool IsDead;
 
         protected void Awake()
         {
             target = FindObjectOfType<PlayerController2>()?.transform; // ( ͡° ͜ʖ ͡°) shhhh
             initialized = true;
+            rigidbody = GetComponentInChildren<Rigidbody>();
+            collider = GetComponentInChildren<Collider>();
+
         }
 
         public void Initialize(bool shielded)
@@ -35,8 +42,13 @@
         public void TakeDamage()
         {
             hp--;
-            if(hp <= 0)
-                Destroy(gameObject);
+            rigidbody.AddForce(transform.right * 20,ForceMode.Impulse);
+            if (hp <= 0)
+            {
+                IsDead = true;
+                collider.enabled = false;
+                rigidbody.AddForce(transform.right * 20,ForceMode.Impulse);
+            }
         }
         
         protected override void Move()
