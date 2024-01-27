@@ -92,6 +92,7 @@
             DOTween.Sequence().PrependInterval(1f).AppendCallback(() =>
             {
                 canMove = true;
+                animator.ResetTrigger(knockback);
                 animator.SetTrigger(walk);
             });
             
@@ -104,8 +105,7 @@
             if (hp <= 0)
             {
                 animator.SetTrigger(die);
-                IsDead = true;
-                collider.enabled = false;
+                IsDead = true; 
                 rigidbody.DOJump(transform.right * 13 - (transform.up * 4), 7, 1, 1.5f);
                 transform.DOShakeRotation(1.5f);
                 experienceController.AddExperience(2);
