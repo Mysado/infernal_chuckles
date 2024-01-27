@@ -7,6 +7,7 @@ namespace Entity
     using System.Collections.Generic;
     using Shields;
     using UnityEngine;
+    using Upgrade;
     using Random = UnityEngine.Random;
 
     public class EnemyController : EntityController
@@ -14,6 +15,7 @@ namespace Entity
         [SerializeField] private float stopDistance;
         [SerializeField] private int hp;
         [SerializeField] private Dictionary<ShieldType, GameObject> shields;
+        [SerializeField] private UpgradesManager upgradesManager;
 
         public ShieldType ShieldType{ get; private set; }
 
@@ -33,6 +35,8 @@ namespace Entity
             rigidbody = GetComponentInChildren<Rigidbody>();
             collider = GetComponentInChildren<Collider>();
             StartCoroutine(Initializator());
+            upgradesManager = FindAnyObjectByType<UpgradesManager>();
+            upgradesManager.FinishStage += KillEmAll;
         }
 
         public void Initialize(bool shielded)
@@ -101,6 +105,13 @@ namespace Entity
 
             canMove = true;
             rigidbody.useGravity = false;
+        }
+
+        private void KillEmAll()
+        {
+            upgradesManager.FinishStage -= KillEmAll;
+            IsDead = true;
+            Destroy(this.gameObject);
         }
     }
 }

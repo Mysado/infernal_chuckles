@@ -1,5 +1,6 @@
 using Score;
 using Sisus.Init;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,10 +8,13 @@ namespace Upgrade
 {
     public class UpgradesManager : MonoBehaviour<ScoreController>
     {
-        [SerializeField] private int pointsToAdd;
+        [SerializeField] private UpgradesRandomizer upgradesRandomizer;
 
         private UpgradeTrait trait;
         private ScoreController scoreController;
+
+        public Action FinishStage;
+        public Action StartStage;
 
         private Dictionary<BuildingType, int> buildingUpgrades = new Dictionary<BuildingType, int>()
         {
@@ -27,13 +31,17 @@ namespace Upgrade
         {
             this.scoreController = scoreController;
         }
-    
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.R))
+            if(Input.GetKeyDown(KeyCode.R)) 
             {
-                scoreController.AddScorePoints(pointsToAdd);
+                StartUpgrade();
             }
+        }
+
+        public void StartUpgrade()
+        {
+            FinishStage?.Invoke();
         }
 
         public void Upgrade(UpgradeTrait traitToAssign)
@@ -54,7 +62,7 @@ namespace Upgrade
 
             scoreController.DeductScorePoints(trait.buildings[buildingUpgrades[trait.buildingType]].cost);
             buildingUpgrades[trait.buildingType]++;
-
+            StartStage?.Invoke();
         }
 
         private void ModifierUp(int traitModifier)
