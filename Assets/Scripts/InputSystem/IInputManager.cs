@@ -6,7 +6,7 @@
     {
         public float Horizontal { get; }
         public float Vertical { get; }
-        public event Action OnRightAttack;
-        public event Action OnLeftAttack;
+        public event Action<AttackPosition> OnRightAttack;
+        public event Action<AttackPosition> OnLeftAttack;
     }
 }

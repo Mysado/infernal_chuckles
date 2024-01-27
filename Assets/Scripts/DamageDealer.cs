@@ -1,21 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using Entity;
 using UnityEngine;
 
 public enum AttackPosition
 {
-    middle,
-    low,
-    high
+    Body,
+    Legs,
+    Head
 }
 public class DamageDealer : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private float attackRange;
 
-    public bool IsStunned = false;
+    public bool IsStunned;
     private RaycastHit[] raycastHits;
     public bool Attack(AttackPosition attackPosition)
     {

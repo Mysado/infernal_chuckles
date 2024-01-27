@@ -20,26 +20,8 @@ public class PlayerController2 : MonoBehaviour<InputManager, ComboController>
     void Start()
     {
         currentHealth = maxHealth;
-        inputManager.Input.Player.AttackLeft.performed += crt =>
-        {
-            RotateLeft();
-            Attack(AttackPosition.middle);
-        };
-        inputManager.Input.Player.AttackRight.performed += crt =>
-        {
-            RotateRight();
-            Attack(AttackPosition.middle);
-        };
-        inputManager.Input.Player.AttackLeftDown.performed += crt =>         
-        {
-            RotateLeft();
-            Attack(AttackPosition.low);
-        };
-        inputManager.Input.Player.AttackRightDown.performed += crt =>         
-        {
-            RotateRight();
-            Attack(AttackPosition.low);
-        };
+        inputManager.OnLeftAttack += InputManager_OnLeftAttack;
+        inputManager.OnRightAttack += InputManager_OnRightAttack;
     }
 
     private void RotateLeft()
@@ -54,22 +36,15 @@ public class PlayerController2 : MonoBehaviour<InputManager, ComboController>
     private void Attack(AttackPosition position)
     {
         if (spear.Attack(position))
-        {
             comboController.IncreaseComboCounter();
-        }
         else
-        {
             comboController.ResetComboCounter();
-        }
     }
     
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy"))
-        {
             TakeDamage();
-            Destroy(other.gameObject);
-        }
     }
 
     private void TakeDamage()
@@ -77,5 +52,17 @@ public class PlayerController2 : MonoBehaviour<InputManager, ComboController>
         currentHealth--;
         if (currentHealth <= 0)
             Time.timeScale = 0;
+    }
+    
+    private void InputManager_OnRightAttack(AttackPosition attackPosition)
+    {
+        RotateRight();
+        Attack(attackPosition);
+    }
+
+    private void InputManager_OnLeftAttack(AttackPosition attackPosition)
+    {
+        RotateLeft();
+        Attack(attackPosition);
     }
 }
