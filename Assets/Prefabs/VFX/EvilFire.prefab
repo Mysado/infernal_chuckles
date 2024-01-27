@@ -4842,7 +4842,7 @@ GameObject:
   - component: {fileID: 8598595280842366656}
   - component: {fileID: 7220587465127304572}
   m_Layer: 0
-  m_Name: Fire
+  m_Name: EvilFire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
