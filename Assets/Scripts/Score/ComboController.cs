@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Score
 {
-   [Service]
+   [Service(typeof(ComboController),FindFromScene = true)]
    public class ComboController : MonoBehaviour
    {
       private readonly int maxComboCounterModifierLimit = 100;
