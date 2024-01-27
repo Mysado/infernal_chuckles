@@ -8,6 +8,7 @@ using UnityEngine.Serialization;
 
 namespace Score
 {
+    [Service]
     public class ScoreController : MonoBehaviour<ComboController>
     {
         [SerializeField] private TextMeshProUGUI scorePointsText;
@@ -17,9 +18,9 @@ namespace Score
         [SerializeField] private float scorePointsTextShakeStrength;
         
         private int score;
+        private int scoreModifier;
         private ComboController comboController;
         private Sequence scoreTextSequence;
-        private Vector2 initialScorePointsTextPosition;
 
         protected override void Init(ComboController comboController)
         {
@@ -31,10 +32,11 @@ namespace Score
             get => score;
             set => score = value;
         }
-
-        protected void Start()
+        
+        public int ScoreModifier
         {
-            initialScorePointsTextPosition = scorePointsText.rectTransform.anchoredPosition;
+            get => scoreModifier;
+            set => scoreModifier = value;
         }
         
         public void AddScorePoints(int scorePointsToAdd)
@@ -60,7 +62,7 @@ namespace Score
                 scorePointsTextShakeStrength, randomness: 80));
             scoreTextSequence.Insert(0,scorePointsText.rectTransform.DOShakeScale(scorePointsTextShakeInterval,
                 scorePointsTextShakeStrength, randomness: 80));
-            scoreTextSequence.OnComplete(() => scorePointsText.rectTransform.DOAnchorPos(initialScorePointsTextPosition, 0.1f));
+            scoreTextSequence.OnComplete(() => scorePointsText.rectTransform.DOAnchorPos(new Vector2(-15,-65), 0.1f));
             scoreTextSequence.OnComplete(() => scorePointsText.DOScale(1, 0.1f));
         }
     }

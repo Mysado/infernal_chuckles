@@ -1,62 +1,55 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+using Score;
+using Sisus.Init;
 using UnityEngine;
-using UnityEngine.VFX;
 
-public class UpgradesManager : MonoBehaviour
+namespace Upgrade
 {
-    [SerializeField] private int pointsToAdd;
-    [SerializeField] private int pointsModifier;
-    
-
-    private UpgradeTrait trait;
-    public TMP_Text pointsUI;
-    public int points;
-
-    
-    private void Update()
+    public class UpgradesManager : MonoBehaviour<ScoreController>
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        [SerializeField] private int pointsToAdd;
+
+        private UpgradeTrait trait;
+        private ScoreController scoreController;
+    
+        protected override void Init(ScoreController scoreController)
         {
-            AddPoints();
+            this.scoreController = scoreController;
         }
-    }
-
-    private void AddPoints()
-    {
-        points += pointsToAdd * pointsModifier;
-        pointsUI.text = points.ToString();
-    }
-
-    public void Upgrade(UpgradeTrait traitToAssign)
-    {
-        trait = traitToAssign;
-
-        switch (trait.upgrades)
+    
+        private void Update()
         {
-            case Upgrades.POINTSMODIFIER:
-                ModifierUp(trait.pointsModifier);
-                break;
-            case Upgrades.LAVAWAVE:
-                UpgradeLavaWave();
-                break;
-            default:
-                break;
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                scoreController.AddScorePoints(pointsToAdd);
+            }
         }
 
-        points -= trait.cost;
-        pointsUI.text = points.ToString();
-    }
+        public void Upgrade(UpgradeTrait traitToAssign)
+        {
+            trait = traitToAssign;
 
-    private void ModifierUp(int traitModifier)
-    {
-        pointsModifier = traitModifier;
-    }
-    private void UpgradeLavaWave()
-    {
-        Debug.Log("Lava wave skill unlocked!");
-    }
+            switch (trait.upgrades)
+            {
+                case Upgrades.POINTSMODIFIER:
+                    ModifierUp(trait.pointsModifier);
+                    break;
+                case Upgrades.LAVAWAVE:
+                    UpgradeLavaWave();
+                    break;
+                default:
+                    break;
+            }
 
-    
+            scoreController.DeductScorePoints(trait.cost);
+        }
+
+        private void ModifierUp(int traitModifier)
+        {
+            scoreController.ScoreModifier = traitModifier;
+        }
+        private void UpgradeLavaWave()
+        {
+            Debug.Log("Lava wave skill unlocked!");
+        }
+    }
 }
