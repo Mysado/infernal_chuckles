@@ -126,3 +126,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 97196aca749ce064594c03301c364aa6, type: 3}
   - {fileID: 21300000, guid: 8d46b33928c6f2b4997a460af0cc31d3, type: 3}
   experienceController: {fileID: 0}
+  enemies:
+  - {fileID: 8551665406754012247, guid: d049a8982dcc811489c2742e114a8f33, type: 3}
+  - {fileID: 8551665406754012247, guid: 0c1b142b92a2d094481a2f4cf156c29b, type: 3}
+  - {fileID: 8551665406754012247, guid: 5f48d248c1b4a7049bb19eee0f01e547, type: 3}

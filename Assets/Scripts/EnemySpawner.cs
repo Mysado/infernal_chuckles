@@ -14,9 +14,9 @@ public class EnemySpawner : MonoBehaviour<ExperienceController>
     [SerializeField] private float spawnRange;
     [SerializeField] private float spawnHeight;
     [SerializeField] private List<Transform> spawnPoints;
-    [SerializeField] private EnemyController enemy;
     [SerializeField] private UpgradesManager upgradesManager;
     [SerializeField] private ExperienceController experienceController;
+    [SerializeField] private List<EnemyController> enemies;
 
     private float timer;
     private int spawnCounter;
@@ -37,13 +37,18 @@ public class EnemySpawner : MonoBehaviour<ExperienceController>
             {
                 timer = 0;
                 var point = spawnPoints[Random.Range(0, spawnPoints.Count)];
-                var newEnemy = Instantiate(enemy, point.position + new Vector3(Random.Range(spawnRange, -spawnRange), 0, 0), Quaternion.identity);
+                var newEnemy = Instantiate(GetEnemyType(), point.position + new Vector3(Random.Range(spawnRange, -spawnRange), 0, 0), Quaternion.identity);
                 newEnemy.Initialize(experienceController, true);
                 spawnCounter++;
             }
 
             timer += Time.deltaTime;
         }
+    }
+
+    private EnemyController GetEnemyType()
+    {
+        return enemies[Random.Range(0, enemies.Count)];
     }
 
     private void StopGame()

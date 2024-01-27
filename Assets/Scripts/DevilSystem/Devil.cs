@@ -5,6 +5,8 @@ using UnityEngine.Serialization;
 
 namespace DevilSystem
 {
+    using Sound;
+
     public class Devil : MonoBehaviour
     {
         [SerializeField] private Animator animator;
