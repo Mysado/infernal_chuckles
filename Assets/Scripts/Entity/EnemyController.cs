@@ -1,4 +1,6 @@
-﻿namespace Entity
+﻿using DG.Tweening;
+
+namespace Entity
 {
     using System;
     using System.Collections.Generic;
@@ -18,6 +20,7 @@
         private Transform targetTransform;
         private Rigidbody rigidbody;
         private Collider collider;
+        private bool canMove = true;
 
         public bool IsDead;
 
@@ -47,14 +50,16 @@
         {
             if (IsTargetingShield(attackPosition))
                 return;
-            
+            canMove = false;
+            DOTween.Sequence().PrependInterval(1f).AppendCallback(() => canMove = true);
             hp--;
-            rigidbody.AddForce(transform.right * 20,ForceMode.Impulse);
+            rigidbody.AddForce(transform.right * 7,ForceMode.Impulse);
             if (hp <= 0)
             {
                 IsDead = true;
                 collider.enabled = false;
-                rigidbody.AddForce(transform.right * 80,ForceMode.Impulse);
+                rigidbody.DOJump(transform.right * 13 - (transform.up * 4), 7, 1, 1.5f);
+                transform.DOShakeRotation(1.5f);
                 Destroy(gameObject, 2);
             }
         }
@@ -73,6 +78,9 @@
         
         protected override void Move()
         {
+            if(IsDead || !canMove)
+                return;
+            
             var distance = targetTransform.position.x - transform.position.x;
 
             if (Mathf.Abs(distance) <= stopDistance)
@@ -80,8 +88,7 @@
                 target.TakeDamage();
                 Destroy(this.gameObject);
             }
-
-
+            
             transform.position = Vector3.MoveTowards(transform.position, targetTransform.position, speed * Time.deltaTime);
         }
     }
