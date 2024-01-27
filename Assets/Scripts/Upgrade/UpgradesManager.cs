@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace Upgrade
 {
+    [Service]
     public class UpgradesManager : MonoBehaviour<ScoreController>
     {
         [SerializeField] private UpgradesRandomizer upgradesRandomizer;

@@ -18,7 +18,7 @@ namespace ExperienceSystem
         protected override void Init(DevilController devilController)
         {
             this.devilController = devilController;
-            this.devilController.DevilController_StopLaugh += LevelUp;
+            this.devilController.DevilController_ResetDevil += LevelUp;
         }
 
         [Button]

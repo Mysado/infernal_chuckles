@@ -2,19 +2,27 @@ using System;
 using DG.Tweening;
 using Sisus.Init;
 using UnityEngine;
+using Upgrade;
 using Random = UnityEngine.Random;
 
 namespace DevilSystem
 {
     [Service(typeof(DevilController), FindFromScene = true)]
-    public class DevilController : MonoBehaviour
+    public class DevilController : MonoBehaviour<UpgradesManager>
     {
         [SerializeField] private Devil devil;
-        public event Action DevilController_StopLaugh;
+        public event Action DevilController_ResetDevil;
+
+        private UpgradesManager upgradesManager;
+        protected override void Init(UpgradesManager upgradesManager)
+        {
+            this.upgradesManager = upgradesManager;
+        }
 
         private void Awake()
         {
-            devil.Devil_StopLaugh += StopLaugh;
+            devil.Devil_StopLaugh += OpenUpgradeMenu;
+            upgradesManager.StartStage += ResetDevil;
             RockTheDevil();
         }
 
@@ -40,9 +48,14 @@ namespace DevilSystem
             //Open Level Up Panel on Anim end
         }
 
-        public void StopLaugh()
+        public void OpenUpgradeMenu()
         {
-            DevilController_StopLaugh?.Invoke();
+            upgradesManager.StartUpgrade();
+        }
+
+        public void ResetDevil()
+        {
+            DevilController_ResetDevil?.Invoke();
         }
 
         private void RockTheDevil()
