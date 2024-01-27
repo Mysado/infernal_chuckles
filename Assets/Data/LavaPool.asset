@@ -22,22 +22,25 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   buildings:
-  - name: 
-    description: 
+  - name: Lava Pool
+    description: sd
     icon: {fileID: 0}
     cost: 0
     levelUpgrade: 0
     pointsModifier: 0
-  - name: 
-    description: 
+    level: 0
+  - name: Lava Pool
+    description: sd
     icon: {fileID: 0}
     cost: 0
     levelUpgrade: 0
     pointsModifier: 0
-  - name: 
-    description: 
+    level: 0
+  - name: Lava Pool
+    description: d
     icon: {fileID: 0}
     cost: 0
     levelUpgrade: 0
     pointsModifier: 0
+    level: 0
   buildingType: 0

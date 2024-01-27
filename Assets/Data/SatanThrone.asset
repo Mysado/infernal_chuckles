@@ -21,5 +21,26 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  buildings: []
+  buildings:
+  - name: Satan Throne
+    description: sd
+    icon: {fileID: 0}
+    cost: 0
+    levelUpgrade: 0
+    pointsModifier: 0
+    level: 0
+  - name: Satan Throne
+    description: sd
+    icon: {fileID: 0}
+    cost: 0
+    levelUpgrade: 0
+    pointsModifier: 0
+    level: 0
+  - name: Satan Throne
+    description: sd
+    icon: {fileID: 0}
+    cost: 0
+    levelUpgrade: 0
+    pointsModifier: 0
+    level: 0
   buildingType: 1

@@ -24,5 +24,5 @@ public class Building
     public int cost;
     public int levelUpgrade;
     public int pointsModifier;
-
+    public int level;
 }

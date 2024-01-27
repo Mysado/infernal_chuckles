@@ -1,5 +1,7 @@
+using DG.Tweening;
 using Score;
 using Sisus.Init;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,6 +20,8 @@ namespace Upgrade
         [SerializeField] private Button upgradeButton;
 
         private ScoreController scoreController;
+        //private RectTransform transform;
+
         public BuildingType buildingTemplateType;
         public UpgradesManager upgradesManager;
     
@@ -30,7 +34,7 @@ namespace Upgrade
         {
             upgradesManager = FindFirstObjectByType<UpgradesManager>();
             buildingTemplateType = buildingTemplate.buildingType;
-            name.text = buildingTemplate.name;
+            name.text = buildingTemplate.buildings[upgradesManager.BuildingUpgrades[buildingTemplateType]].name;
             description.text = buildingTemplate.buildings[upgradesManager.BuildingUpgrades[buildingTemplateType]].description;
             icon.sprite = buildingTemplate.buildings[upgradesManager.BuildingUpgrades[buildingTemplateType]].icon;
             cost.text = buildingTemplate.buildings[upgradesManager.BuildingUpgrades[buildingTemplateType]].cost.ToString();
@@ -45,5 +49,7 @@ namespace Upgrade
             upgradeButton.onClick.AddListener(()=>upgradesManager.Upgrade(buildingTemplate));  
         
         }
+
+
     }
 }

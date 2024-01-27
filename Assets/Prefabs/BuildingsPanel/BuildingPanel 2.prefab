@@ -169,13 +169,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8848ece492668f64385d89f3578a24da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingTemplate: {fileID: 11400000, guid: 5379140d85488054dae032eaa7cfd105, type: 2}
+  buildingTemplate: {fileID: 11400000, guid: 67d50c8be01a4ff46b5459ac9685b0c8, type: 2}
   name: {fileID: 8667212066263774929}
   description: {fileID: 8094865227145365921}
   icon: {fileID: 8378528044262091271}
   cost: {fileID: 4104466605840188003}
   levelUpgrade: {fileID: 6191924665577117600}
   upgradeButton: {fileID: 6801286611508853916}
+  buildingTemplateType: 0
   upgradesManager: {fileID: 0}
 --- !u!1 &3686917958237933378
 GameObject:
@@ -611,10 +612,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 8172713819333672402}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 186}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -25}
+  m_SizeDelta: {x: 0, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5034073109875363641
 CanvasRenderer:

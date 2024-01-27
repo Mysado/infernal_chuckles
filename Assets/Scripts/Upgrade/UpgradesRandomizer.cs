@@ -6,7 +6,6 @@ using UnityEngine.InputSystem.iOS;
 
 public class UpgradesRandomizer : MonoBehaviour
 {
-    [SerializeField] private Transform[] buildingsPanelPosition;
     [SerializeField] private GameObject[] allBuildingsPool;
 
     private void Start()
@@ -18,12 +17,12 @@ public class UpgradesRandomizer : MonoBehaviour
     {
         List<int> spawnedTraits = new List<int>();
 
-        for (int i = 0; i < buildingsPanelPosition.Length; i++)
+        for (int i = 0; i < 3; i++)
         {
             int rand = RandomizeUpgrades(spawnedTraits);
-            GameObject traitClone = Instantiate(allBuildingsPool[rand], buildingsPanelPosition[i].localPosition, Quaternion.identity);
+            GameObject traitClone = Instantiate(allBuildingsPool[rand], transform.localPosition, Quaternion.identity);
             traitClone.transform.SetParent(GameObject.FindGameObjectWithTag("UpgradesPanel").transform, false);
-            
+            traitClone.SetActive(false);
         }
     }
 
