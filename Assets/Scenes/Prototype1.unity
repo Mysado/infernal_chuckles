@@ -5733,6 +5733,22 @@ PrefabInstance:
       value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 4660836449760762963, guid: f4b3521d404779a47bbcd718822a83ac, type: 3}
+      propertyPath: m_margin.w
+      value: -65.470276
+      objectReference: {fileID: 0}
+    - target: {fileID: 4660836449760762963, guid: f4b3521d404779a47bbcd718822a83ac, type: 3}
+      propertyPath: m_margin.x
+      value: -207.5896
+      objectReference: {fileID: 0}
+    - target: {fileID: 4660836449760762963, guid: f4b3521d404779a47bbcd718822a83ac, type: 3}
+      propertyPath: m_margin.y
+      value: -128.2677
+      objectReference: {fileID: 0}
+    - target: {fileID: 4660836449760762963, guid: f4b3521d404779a47bbcd718822a83ac, type: 3}
+      propertyPath: m_margin.z
+      value: -199.60779
+      objectReference: {fileID: 0}
+    - target: {fileID: 4660836449760762963, guid: f4b3521d404779a47bbcd718822a83ac, type: 3}
       propertyPath: m_fontAsset
       value: 
       objectReference: {fileID: 11400000, guid: 17ffc7ee4b1d2fc4ea3f7cccff15e9d8, type: 2}

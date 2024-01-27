@@ -26,7 +26,7 @@ public class PlayerController2 : MonoBehaviour<InputManager, ComboController, Sc
         currentHealth = maxHealth;
         inputManager.OnLeftAttack += InputManager_OnLeftAttack;
         inputManager.OnRightAttack += InputManager_OnRightAttack;
-        text.text = "HP = " + currentHealth;
+        text.text = "HP: " + currentHealth;
     }
 
     private void RotateLeft()
@@ -58,7 +58,7 @@ public class PlayerController2 : MonoBehaviour<InputManager, ComboController, Sc
     public void TakeDamage()
     {
         currentHealth--;
-        text.text = "HP = " + currentHealth;
+        text.text = "HP: " + currentHealth;
         if (currentHealth <= 0)
         {
             text.text = "GameOver";
