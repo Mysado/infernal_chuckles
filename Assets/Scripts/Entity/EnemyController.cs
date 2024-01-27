@@ -43,6 +43,9 @@
         
         public void TakeDamage(AttackPosition attackPosition)
         {
+            if (IsTargetingShield(attackPosition))
+                return;
+            
             hp--;
             rigidbody.AddForce(transform.right * 20,ForceMode.Impulse);
             if (hp <= 0)
@@ -52,6 +55,18 @@
                 rigidbody.AddForce(transform.right * 80,ForceMode.Impulse);
                 Destroy(gameObject, 2);
             }
+        }
+
+        private bool IsTargetingShield(AttackPosition attackPosition)
+        {
+            if (attackPosition == AttackPosition.Head && ShieldType == ShieldType.Head)
+                return true;
+            if (attackPosition == AttackPosition.Body && ShieldType == ShieldType.Body)
+                return true;
+            if (attackPosition == AttackPosition.Legs && ShieldType == ShieldType.Legs)
+                return true;
+            
+            return false;
         }
         
         protected override void Move()
