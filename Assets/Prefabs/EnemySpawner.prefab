@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 3162912637429581757}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.5, y: 1, z: 0}
+  m_LocalPosition: {x: 7.21, y: 24.49, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -56,7 +56,7 @@ Transform:
   m_GameObject: {fileID: 5648473653153019586}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -16.5, y: 1, z: 0}
+  m_LocalPosition: {x: -6.88, y: 24.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -108,10 +108,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95555885a36a19342b0436de73b6fd03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
   spawnInterval: 3
   spawnBoost: 0.2
   spawnBoostThreshold: 5
   spawnRange: 2
+  spawnHeight: 10
   spawnPoints:
   - {fileID: 4199777558975824508}
   - {fileID: 3259256770229041594}

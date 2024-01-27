@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using Entity;
 using Sirenix.OdinInspector;
@@ -9,6 +10,7 @@ public class EnemySpawner : SerializedMonoBehaviour
     [SerializeField] private float spawnBoost;
     [SerializeField] private int spawnBoostThreshold;
     [SerializeField] private float spawnRange;
+    [SerializeField] private float spawnHeight;
     [SerializeField] private List<Transform> spawnPoints;
     [SerializeField] private EnemyController enemy;
 

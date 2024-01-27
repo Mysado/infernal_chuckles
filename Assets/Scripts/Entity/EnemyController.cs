@@ -3,6 +3,7 @@
 namespace Entity
 {
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using Shields;
     using UnityEngine;
@@ -20,7 +21,7 @@ namespace Entity
         private Transform targetTransform;
         private Rigidbody rigidbody;
         private Collider collider;
-        private bool canMove = true;
+        private bool canMove;
 
         public bool IsDead;
 
@@ -31,7 +32,7 @@ namespace Entity
             initialized = true;
             rigidbody = GetComponentInChildren<Rigidbody>();
             collider = GetComponentInChildren<Collider>();
-
+            StartCoroutine(Initializator());
         }
 
         public void Initialize(bool shielded)
@@ -90,6 +91,16 @@ namespace Entity
             }
             
             transform.position = Vector3.MoveTowards(transform.position, targetTransform.position, speed * Time.deltaTime);
+        }
+
+        private IEnumerator Initializator()
+        {
+            yield return new WaitForSeconds(2);
+            while (rigidbody.velocity.y < -0.01f)
+                yield return new WaitForEndOfFrame();
+
+            canMove = true;
+            rigidbody.useGravity = false;
         }
     }
 }
