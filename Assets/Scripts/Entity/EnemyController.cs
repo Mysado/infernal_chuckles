@@ -14,7 +14,8 @@
 
         public ShieldType ShieldType{ get; private set; }
 
-        private Transform target;
+        private PlayerController2 target;
+        private Transform targetTransform;
         private Rigidbody rigidbody;
         private Collider collider;
 
@@ -22,7 +23,8 @@
 
         protected void Awake()
         {
-            target = FindObjectOfType<PlayerController2>()?.transform; // ( ͡° ͜ʖ ͡°) shhhh
+            target = FindObjectOfType<PlayerController2>(); // ( ͡° ͜ʖ ͡°) shhhh
+            targetTransform = target.transform;
             initialized = true;
             rigidbody = GetComponentInChildren<Rigidbody>();
             collider = GetComponentInChildren<Collider>();
@@ -31,7 +33,7 @@
 
         public void Initialize(bool shielded)
         {
-            transform.rotation = Quaternion.Euler(0, transform.position.x > target.position.x ? 0 : 180, 0);
+            transform.rotation = Quaternion.Euler(0, transform.position.x > targetTransform.position.x ? 0 : 180, 0);
             
             if (!shielded) 
                 return;
@@ -71,12 +73,16 @@
         
         protected override void Move()
         {
-            var distance = target.position.x - transform.position.x;
-            
+            var distance = targetTransform.position.x - transform.position.x;
+
             if (Mathf.Abs(distance) <= stopDistance)
-                return;
-            
-            transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+            {
+                target.TakeDamage();
+                Destroy(this.gameObject);
+            }
+
+
+            transform.position = Vector3.MoveTowards(transform.position, targetTransform.position, speed * Time.deltaTime);
         }
     }
 }
