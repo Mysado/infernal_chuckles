@@ -1,14 +1,5 @@
 {
   "dependencies": {
-    "com.aginerian.input": {
-      "version": "https://github.com/TRS6123/AginerianInput.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {
-        "com.unity.inputsystem": "1.0.2"
-      },
-      "hash": "88e0146b668d20542590b502a047e611a572d24b"
-    },
     "com.singularitygroup.hotreload": {
       "version": "file:com.singularitygroup.hotreload",
       "depth": 0,
