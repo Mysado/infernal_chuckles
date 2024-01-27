@@ -2,6 +2,8 @@
 {
     public enum SoundType
     {
-        
+        EnemyDamaged,
+        PlayerDamaged,
+        ShieldHit,
     }
 }
