@@ -9,9 +9,9 @@ public class SoundManager : SerializedMonoBehaviour
     [SerializeField] private Dictionary<SoundType, AudioClip[]> sounds;
     [SerializeField] private AudioSource sourcePrefab;
 
-    private List<AudioSource> sourcePool;
-    private List<AudioSource> sourceInUse;
-    private List<AudioSource> swapper;
+    private readonly List<AudioSource> sourcePool = new();
+    private readonly List<AudioSource> sourceInUse = new();
+    private readonly List<AudioSource> swapper = new();
 
     public void Play(SoundType soundType, Vector3 position)
     {
