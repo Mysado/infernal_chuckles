@@ -1,5 +1,6 @@
 ﻿using DG.Tweening;
 using ExperienceSystem;
+using UnityEngine.UI;
 using Sisus.Init;
 
 namespace Entity
@@ -17,15 +18,18 @@ namespace Entity
         [SerializeField] private float stopDistance;
         [SerializeField] private int hp;
         [SerializeField] private Dictionary<ShieldType, GameObject> shields;
-        [SerializeField] private UpgradesManager upgradesManager;
+        [SerializeField] private Image healthImage;
 
         public ShieldType ShieldType{ get; private set; }
+        public bool CanMove => canMove;
 
         private PlayerController2 target;
         private Transform targetTransform;
         private Rigidbody rigidbody;
         private Collider collider;
         private bool canMove;
+        private UpgradesManager upgradesManager;
+        private List<Sprite> healths;
 
         public bool IsDead;
 
@@ -41,10 +45,11 @@ namespace Entity
             upgradesManager.FinishStage += KillEmAll;
         }
 
-        public void Initialize(bool shielded)
+        public void Initialize(bool shielded, List<Sprite> healths)
         {
             transform.rotation = Quaternion.Euler(0, transform.position.x > targetTransform.position.x ? 0 : 180, 0);
-            
+            this.healths = healths;
+            healthImage.sprite = healths[hp];
             if (!shielded) 
                 return;
            
@@ -55,12 +60,15 @@ namespace Entity
         
         public void TakeDamage(AttackPosition attackPosition)
         {
-            if (IsTargetingShield(attackPosition))
-                return;
+            rigidbody.AddForce(transform.right * 7,ForceMode.Impulse);
             canMove = false;
             DOTween.Sequence().PrependInterval(1f).AppendCallback(() => canMove = true);
+            
+            if (IsTargetingShield(attackPosition))
+                return;
+            
             hp--;
-            rigidbody.AddForce(transform.right * 7,ForceMode.Impulse);
+            healthImage.sprite = healths[hp];
             if (hp <= 0)
             {
                 IsDead = true;

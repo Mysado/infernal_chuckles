@@ -28,17 +28,20 @@ public class DamageDealer : MonoBehaviour
         {
             if (hit.collider.CompareTag("Enemy"))
             {
-                DealDamage(hit.collider.gameObject, attackPosition);
-                return true;
+                var enemy = hit.collider.GetComponent<EnemyController>();
+                if (enemy.CanMove)
+                {
+                    DealDamage(enemy, attackPosition);
+                    return true;
+                }
             }
         }
         StunPlayer();
         return false;
     }
 
-    private void DealDamage(GameObject other, AttackPosition attackPosition)
+    private void DealDamage(EnemyController enemy, AttackPosition attackPosition)
     {
-        var enemy = other.GetComponent<EnemyController>();
         enemy.TakeDamage(attackPosition);
     }
 
