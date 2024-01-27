@@ -58,7 +58,7 @@ namespace Entity
             upgradesManager.FinishStage += KillEmAll;
         }
 
-        public void Initialize(ExperienceController experienceController, bool shielded)
+        public void Initialize(ExperienceController experienceController, bool shielded, List<Sprite> healths)
         {
             this.experienceController = experienceController;
             transform.rotation = Quaternion.Euler(0, transform.position.x > targetTransform.position.x ? 0 : 180, 0);

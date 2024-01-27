@@ -108,15 +108,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95555885a36a19342b0436de73b6fd03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects: []
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes: []
   spawnInterval: 3
   spawnBoost: 0.2
   spawnBoostThreshold: 5
@@ -126,3 +117,11 @@ MonoBehaviour:
   - {fileID: 4199777558975824508}
   - {fileID: 3259256770229041594}
   enemy: {fileID: 4546058177882167821, guid: e0255456c7c64a247a04bea7337da39b, type: 3}
+  upgradesManager: {fileID: 0}
+  healths:
+  - {fileID: 21300000, guid: fad405bb7e6d4fe45a7d52e2ec9d454f, type: 3}
+  - {fileID: 21300000, guid: 6a3ae8f2ebc3ce04483fa1410b0c0f20, type: 3}
+  - {fileID: 21300000, guid: deaa8bca018b78d4a931330b4aa2f0cf, type: 3}
+  - {fileID: 21300000, guid: 97196aca749ce064594c03301c364aa6, type: 3}
+  - {fileID: 21300000, guid: 8d46b33928c6f2b4997a460af0cc31d3, type: 3}
+  experienceController: {fileID: 0}
