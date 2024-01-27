@@ -12,11 +12,23 @@ public class DamageDealer : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private float attackRange;
+    [SerializeField] private float cooldown;
 
     public bool IsStunned;
     private RaycastHit[] raycastHits;
+    private float cooldownTimer;
+
+
+    private void Update()
+    {
+        cooldownTimer += Time.deltaTime;
+    }
+
     public bool Attack(AttackPosition attackPosition)
     {
+        if (cooldownTimer < cooldown)
+            return false;
+        
         if (IsStunned)
         {
             animator.Play("ImpArmature|ImpIStun",0,0);
@@ -42,6 +54,10 @@ public class DamageDealer : MonoBehaviour
                 }
             }
         }
+
+        if (enemyDamaged)
+            return true;
+        
         StunPlayer();
         return false;
     }
@@ -53,7 +69,8 @@ public class DamageDealer : MonoBehaviour
 
     private void StunPlayer()
     {
-        animator.Play("ImpArmature|ImpIStun",0,0);
+        cooldownTimer = 0;
+        //animator.Play("ImpArmature|ImpIStun",0,0);
         IsStunned = true;
         DOTween.Sequence().PrependInterval(0.5f).AppendCallback(() => IsStunned = false);
     }

@@ -1,20 +1,16 @@
-﻿using DG.Tweening;
-using ExperienceSystem;
-using UnityEngine.UI;
-using Sisus.Init;
-using Unity.VisualScripting;
-
-namespace Entity
+﻿namespace Entity
 {
     using System;
     using System.Collections;
     using System.Collections.Generic;
     using ExperienceSystem;
     using Shields;
-    using Sisus.Init;
     using UnityEngine;
     using Upgrade;
     using Random = UnityEngine.Random;
+    using DG.Tweening;
+    using UnityEngine.UI;
+
 
     public class EnemyController : MonoBehaviour
     {
@@ -24,6 +20,7 @@ namespace Entity
         [SerializeField] private Transform healthParent;
         [SerializeField] private Sprite healthSprite;
         [SerializeField] protected float speed;
+        [SerializeField] protected Animator animator;
 
         public ShieldType ShieldType{ get; private set; }
         public bool CanMove => canMove;
@@ -40,6 +37,11 @@ namespace Entity
 
         public bool IsDead;
         
+        private static readonly int walk = Animator.StringToHash("Walk");
+        private static readonly int attack = Animator.StringToHash("Attack");
+        private static readonly int die = Animator.StringToHash("Die");
+        private static readonly int knockback = Animator.StringToHash("Knockback");
+
         protected void Update()
         {
             if (!initialized)
@@ -84,9 +86,14 @@ namespace Entity
         
         public void TakeDamage(AttackPosition attackPosition)
         {
+            animator.SetTrigger(knockback);
             rigidbody.AddForce(transform.right * Random.Range(5,10),ForceMode.Impulse);
             canMove = false;
-            DOTween.Sequence().PrependInterval(1f).AppendCallback(() => canMove = true);
+            DOTween.Sequence().PrependInterval(1f).AppendCallback(() =>
+            {
+                canMove = true;
+                animator.SetTrigger(walk);
+            });
             
             if (IsTargetingShield(attackPosition))
                 return;
@@ -96,6 +103,7 @@ namespace Entity
             hp--;
             if (hp <= 0)
             {
+                animator.SetTrigger(die);
                 IsDead = true;
                 collider.enabled = false;
                 rigidbody.DOJump(transform.right * 13 - (transform.up * 4), 7, 1, 1.5f);
@@ -107,6 +115,7 @@ namespace Entity
         
         public void KnockBack()
         {
+            animator.SetTrigger(knockback);
             rigidbody.AddForce(transform.right * Random.Range(5,10),ForceMode.Impulse);
             canMove = false;
             DOTween.Sequence().PrependInterval(1f).AppendCallback(() => canMove = true);
@@ -133,8 +142,10 @@ namespace Entity
 
             if (Mathf.Abs(distance) <= stopDistance)
             {
+                animator.SetTrigger(attack);
                 target.TakeDamage();
-                Destroy(gameObject);
+                IsDead = true;
+                Destroy(gameObject, 1);
             }
             
             transform.position = Vector3.MoveTowards(transform.position, targetTransform.position, speed * Time.deltaTime);
@@ -148,6 +159,7 @@ namespace Entity
 
             canMove = true;
             rigidbody.useGravity = false;
+            animator.SetTrigger(walk);
         }
 
         private void KillEmAll()
@@ -155,6 +167,11 @@ namespace Entity
             upgradesManager.FinishStage -= KillEmAll;
             IsDead = true;
             Destroy(gameObject);
+        }
+
+        private void OnDestroy()
+        {
+            upgradesManager.FinishStage -= KillEmAll;
         }
     }
 }
