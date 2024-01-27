@@ -8,8 +8,8 @@
         [SerializeField] private float stopDistance;
         [SerializeField] private int hp;
         [SerializeField] private GameObject shield;
-        [SerializeField] private List<float> shieldHeights;
-        [SerializeField] private float shieldOffsetX;
+        /*[SerializeField] private List<float> shieldHeights;
+        [SerializeField] private float shieldOffsetX;*/
         
         private Transform target;
         private Rigidbody rigidbody;
@@ -29,14 +29,7 @@
         public void Initialize(bool shielded)
         {
             if (shielded)
-            {
-                /*shield.SetActive(true);
-
-                var direction = target.position.x - transform.position.x;
-
-                shield.transform.localPosition = new Vector3(direction * shieldOffsetX,
-                    shieldHeights[Random.Range(0, shieldHeights.Count)], 0);*/
-            }
+                shield.SetActive(true);
         }
         
         public void TakeDamage()
