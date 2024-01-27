@@ -36,7 +36,6 @@ namespace Upgrade
             if(Input.GetKeyDown(KeyCode.R)) 
             {
                 StartUpgrade();
-                scoreController.AddScorePoints(pointsToAdd);
             }
         }
 
