@@ -8,17 +8,12 @@ using Random = UnityEngine.Random;
 namespace DevilSystem
 {
     [Service(typeof(DevilController), FindFromScene = true)]
-    public class DevilController : MonoBehaviour<UpgradesManager>
+    public class DevilController : MonoBehaviour
     {
         [SerializeField] private Devil devil;
         public event Action DevilController_ResetDevil;
 
-        private UpgradesManager upgradesManager;
-        protected override void Init(UpgradesManager upgradesManager)
-        {
-            this.upgradesManager = upgradesManager;
-        }
-
+        [SerializeField] private UpgradesManager upgradesManager;
         private void Awake()
         {
             devil.Devil_StopLaugh += OpenUpgradeMenu;
@@ -48,12 +43,12 @@ namespace DevilSystem
             //Open Level Up Panel on Anim end
         }
 
-        public void OpenUpgradeMenu()
+        private void OpenUpgradeMenu()
         {
             upgradesManager.StartUpgrade();
         }
 
-        public void ResetDevil()
+        private void ResetDevil()
         {
             DevilController_ResetDevil?.Invoke();
         }

@@ -11610,6 +11610,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3088117558881235501, guid: a7fad2e56b405d248b8c8062de3ee177,
         type: 3}
+      propertyPath: lerpDuration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3088117558881235501, guid: a7fad2e56b405d248b8c8062de3ee177,
+        type: 3}
       propertyPath: initialPosition
       value: 
       objectReference: {fileID: 1230164613}
@@ -11713,6 +11718,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.008
       objectReference: {fileID: 0}
+    - target: {fileID: 8855036001816123057, guid: a7fad2e56b405d248b8c8062de3ee177,
+        type: 3}
+      propertyPath: upgradesManager
+      value: 
+      objectReference: {fileID: 740579139}
     m_RemovedComponents: []
     m_RemovedGameObjects: [{fileID: 1832721135413981807, guid: a7fad2e56b405d248b8c8062de3ee177,
         type: 3}, {fileID: 5615161318210152037, guid: a7fad2e56b405d248b8c8062de3ee177,
