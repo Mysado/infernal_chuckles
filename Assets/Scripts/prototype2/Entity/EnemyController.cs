@@ -9,11 +9,15 @@
         
         private Transform target;
 
-        protected override void Awake()
+        protected void Awake()
         {
-            base.Awake();
-            target = FindObjectOfType<PlayerController>()?.transform; // ( ͡° ͜ʖ ͡°)
+            target = FindObjectOfType<PlayerController>()?.transform; // ( ͡° ͜ʖ ͡°) shhhh
             initialized = true;
+        }
+
+        public void Damage()
+        {
+            Destroy(gameObject);
         }
         
         protected override void Move()

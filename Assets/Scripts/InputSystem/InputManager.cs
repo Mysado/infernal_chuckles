@@ -1,3 +1,4 @@
+using System;
 using InputSystem;
 using Sisus.Init;
 using UnityEngine;
@@ -6,20 +7,25 @@ using UnityEngine;
 public class InputManager : MonoBehaviour, IInputManager
 {
     private InputActions input;
+    public InputActions Input => input; // whyyyyy Q _ Q 
 
-    public float Horizontal => horizontal;
-    public InputActions Input => input;
+    public float Horizontal { get; private set; }
+    public float Vertical { get; private set; }
 
-    private float horizontal;
+    public event Action OnRightAttack;
+    public event Action OnLeftAttack;
 
     private void Awake()
     {
         input = new InputActions();
+        input.Player.AttackLeft.started += _ => OnLeftAttack?.Invoke();
+        input.Player.AttackRight.started += _ => OnRightAttack?.Invoke();
         input.Player.Enable();
     }
 
     private void Update()
     {
-        horizontal = input.Player.Movement.ReadValue<Vector2>().x;
+        Horizontal = input.Player.Movement.ReadValue<Vector2>().x;
+        Vertical = input.Player.Movement.ReadValue<Vector2>().y;
     }
 }
