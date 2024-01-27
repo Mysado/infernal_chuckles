@@ -1,6 +1,6 @@
+using System;
 using Score;
 using Sisus.Init;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -36,6 +36,7 @@ namespace Upgrade
             if(Input.GetKeyDown(KeyCode.R)) 
             {
                 StartUpgrade();
+                scoreController.AddScorePoints(pointsToAdd);
             }
         }
 
