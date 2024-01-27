@@ -5,19 +5,26 @@
     public class EnemyController : EntityController
     {
         [SerializeField] private float stopDistance;
-        [SerializeField] private float attackDistance;
+        [SerializeField] private int hp;
         
         private Transform target;
 
         protected void Awake()
         {
-            target = FindObjectOfType<PlayerController>()?.transform; // ( ͡° ͜ʖ ͡°) shhhh
+            target = FindObjectOfType<PlayerController2>()?.transform; // ( ͡° ͜ʖ ͡°) shhhh
             initialized = true;
         }
 
         public void Damage()
         {
             Destroy(gameObject);
+        }
+        
+        public void TakeDamage()
+        {
+            hp--;
+            if(hp <= 0)
+                Destroy(gameObject);
         }
         
         protected override void Move()
@@ -27,9 +34,7 @@
             if (Mathf.Abs(distance) <= stopDistance)
                 return;
             
-            var direction = target.position.x > transform.position.x ? 1 : -1;
-            var position = transform.position;
-            transform.position = new Vector3(position.x + direction * speed * Time.deltaTime, position.y, position.z);
+            transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
         }
     }
 }

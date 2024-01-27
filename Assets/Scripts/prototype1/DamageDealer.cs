@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Entity;
 using UnityEngine;
 
 public class DamageDealer : MonoBehaviour
@@ -41,7 +42,7 @@ public class DamageDealer : MonoBehaviour
 
     private void DealDamage(GameObject other)
     {
-        other.GetComponent<EnemyMovementController>().TakeDamage();
+        other.GetComponent<EnemyController>().TakeDamage();
         other.GetComponent<Rigidbody>().AddForce(other.transform.right * 20,ForceMode.Impulse);
     }
 }
