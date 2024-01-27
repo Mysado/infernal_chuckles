@@ -1,8 +1,9 @@
+using InputSystem;
 using Sisus.Init;
 using UnityEngine;
 
 [Service]
-public class InputManager : MonoBehaviour
+public class InputManager : MonoBehaviour, IInputManager
 {
     private InputActions input;
 
