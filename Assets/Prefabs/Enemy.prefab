@@ -259,84 +259,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56da00e0ee744849a3d634100561a2a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 5777916891027676295}
-    - {fileID: 8636773844017050911}
-    - {fileID: 312297823450578351}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: shields
-      Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[Entity.Shields.ShieldType,
-        Assembly-CSharp],[UnityEngine.GameObject, UnityEngine.CoreModule]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[Entity.Shields.ShieldType,
-        Assembly-CSharp]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 3
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 1
-    - Name: $v
-      Entry: 10
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 2
-    - Name: $v
-      Entry: 10
-      Data: 1
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 3
-    - Name: $v
-      Entry: 10
-      Data: 2
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
   speed: 5
   stopDistance: 1.2
   hp: 2
   healthImage: {fileID: 5878156907468527875}
+  shields:
+  - {fileID: 5777916891027676295}
+  - {fileID: 8636773844017050911}
+  - {fileID: 312297823450578351}
+  upgradesManager: {fileID: 0}
   IsDead: 0
 --- !u!54 &1746101256243916845
 Rigidbody:
