@@ -110,6 +110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnInterval: 3
   spawnBoost: 0.2
+  minSpawnInterval: 0.5
   spawnBoostThreshold: 5
   spawnRange: 2
   spawnHeight: 10

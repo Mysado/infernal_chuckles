@@ -1,17 +1,15 @@
-using System.Collections;
 using System.Collections.Generic;
 using Entity;
 using ExperienceSystem;
-using Sirenix.OdinInspector;
 using Sisus.Init;
 using UnityEngine;
-using UnityEngine.UIElements;
 using Upgrade;
 
 public class EnemySpawner : MonoBehaviour<ExperienceController>
 {
     [SerializeField] private float spawnInterval;
     [SerializeField] private float spawnBoost;
+    [SerializeField] private float minSpawnInterval;
     [SerializeField] private int spawnBoostThreshold;
     [SerializeField] private float spawnRange;
     [SerializeField] private float spawnHeight;
@@ -36,7 +34,7 @@ public class EnemySpawner : MonoBehaviour<ExperienceController>
     {
         if (!isStoped)
         {
-            if (timer >= spawnInterval - (spawnCounter / spawnBoostThreshold) * spawnBoost)
+            if (timer >= Mathf.Max(minSpawnInterval, spawnInterval - (spawnCounter / spawnBoostThreshold) * spawnBoost))
             {
                 timer = 0;
                 var point = spawnPoints[Random.Range(0, spawnPoints.Count)];
