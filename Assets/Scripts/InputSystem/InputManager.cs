@@ -7,6 +7,7 @@ public class InputManager : MonoBehaviour
     private InputActions input;
 
     public float Horizontal => horizontal;
+    public InputActions Input => input;
 
     private float horizontal;
 

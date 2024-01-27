@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class DamageDealer : MonoBehaviour
 {
+    [SerializeField] private Collider collider;
+    [SerializeField] private MeshRenderer renderer;
+    [SerializeField] private Animator animator;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +18,17 @@ public class DamageDealer : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void SetActive(bool value)
+    {
+        collider.enabled = value;
+        //renderer.enabled = value;
+    }
+
+    public void Attack()
+    {
+        animator.Play("ImpArmature|ImpIAttack",0,0);
     }
     
     private void OnTriggerEnter(Collider other)
