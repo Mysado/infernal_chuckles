@@ -13,7 +13,9 @@ namespace DevilSystem
         [SerializeField] private float lerpDuration;
         [SerializeField] private SkinnedMeshRenderer renderer;
         
-        public event Action Devil_StopLaugh; 
+        public event Action Devil_StopLaugh;
+
+        private Sequence devilSequence;
 
         public void UpdateAnimationBlendShape(float percentage)
         {
@@ -23,7 +25,7 @@ namespace DevilSystem
         public void LerpPosition(float percentage)
         {
             var newPosition = Vector3.Lerp(initialPosition.position, endPosition.position, percentage);
-            transform.DOMove(newPosition, lerpDuration);
+            devilSequence.Insert(0,transform.DOMove(newPosition, lerpDuration));
         }
 
         public void StartLaughAnim()

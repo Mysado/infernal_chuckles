@@ -13,6 +13,7 @@ namespace ExperienceSystem
         private int experiencePoints;
         private int currentLevel = 0;
         private DevilController devilController;
+        private bool levelingUp;
         
         protected override void Init(DevilController devilController)
         {
@@ -23,7 +24,14 @@ namespace ExperienceSystem
         [Button]
         public void AddExperience(int experienceGained)
         {
+            if (levelingUp)
+                return;
+            
             experiencePoints += experienceGained;
+            
+            if (experiencePoints == experienceData.experienceNeededForLevelUp[currentLevel] && !levelingUp)
+                levelingUp = true;
+            
             ChangeDevilState();
         }
 
@@ -35,9 +43,9 @@ namespace ExperienceSystem
 
         private void LevelUp()
         {
-            Debug.Log("Leveled");
             experiencePoints = 0;
             currentLevel++;
+            levelingUp = false;
             ChangeDevilState();
         }
     }
