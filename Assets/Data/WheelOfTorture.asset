@@ -10,13 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 609b6e0e93705724ba05bbd728091965, type: 3}
-  m_Name: Budynek3
+  m_Name: WheelOfTorture
   m_EditorClassIdentifier: 
-  name: Budynek 3
-  description: asd
-  icon: {fileID: 0}
-  cost: 1000
-  costToNextUpgrade: 0
-  levelUpgrade: 1
-  pointsModifier: 0
-  upgrades: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  buildings: []
+  buildingType: 2

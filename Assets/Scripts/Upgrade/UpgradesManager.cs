@@ -1,5 +1,6 @@
 using Score;
 using Sisus.Init;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Upgrade
@@ -10,7 +11,18 @@ namespace Upgrade
 
         private UpgradeTrait trait;
         private ScoreController scoreController;
-    
+
+        private Dictionary<BuildingType, int> buildingUpgrades = new Dictionary<BuildingType, int>()
+        {
+            {BuildingType.LAVAPOOL, 0},
+            {BuildingType.SATANTHRONE, 0},
+            {BuildingType.TORTUREWHEEL, 0},
+            {BuildingType.WHIPPINGTORTURE, 0},
+            {BuildingType.SOULSSUCKER, 0}
+        };
+
+        public Dictionary<BuildingType, int> BuildingUpgrades {  get { return buildingUpgrades; } }
+
         protected override void Init(ScoreController scoreController)
         {
             this.scoreController = scoreController;
@@ -28,19 +40,21 @@ namespace Upgrade
         {
             trait = traitToAssign;
 
-            switch (trait.upgrades)
+            switch (trait.buildingType)
             {
-                case Upgrades.POINTSMODIFIER:
-                    ModifierUp(trait.pointsModifier);
+                case BuildingType.LAVAPOOL:
+                    ModifierUp(trait.buildings[buildingUpgrades[trait.buildingType]].pointsModifier);
                     break;
-                case Upgrades.LAVAWAVE:
+                case BuildingType.SATANTHRONE:
                     UpgradeLavaWave();
                     break;
                 default:
                     break;
             }
 
-            scoreController.DeductScorePoints(trait.cost);
+            scoreController.DeductScorePoints(trait.buildings[buildingUpgrades[trait.buildingType]].cost);
+            buildingUpgrades[trait.buildingType]++;
+
         }
 
         private void ModifierUp(int traitModifier)

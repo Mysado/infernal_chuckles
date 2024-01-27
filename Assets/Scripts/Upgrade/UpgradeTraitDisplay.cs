@@ -18,7 +18,7 @@ namespace Upgrade
         [SerializeField] private Button upgradeButton;
 
         private ScoreController scoreController;
-    
+        public BuildingType buildingTemplateType;
         public UpgradesManager upgradesManager;
     
         protected override void Init(ScoreController scoreController)
@@ -29,14 +29,15 @@ namespace Upgrade
         private void Start()
         {
             upgradesManager = FindFirstObjectByType<UpgradesManager>();
+            buildingTemplateType = buildingTemplate.buildingType;
             name.text = buildingTemplate.name;
-            description.text = buildingTemplate.description;
-            icon.sprite = buildingTemplate.icon;
-            cost.text = buildingTemplate.cost.ToString();
+            description.text = buildingTemplate.buildings[upgradesManager.BuildingUpgrades[buildingTemplateType]].description;
+            icon.sprite = buildingTemplate.buildings[upgradesManager.BuildingUpgrades[buildingTemplateType]].icon;
+            cost.text = buildingTemplate.buildings[upgradesManager.BuildingUpgrades[buildingTemplateType]].cost.ToString();
             cost.color = Color.red;
-            levelUpgrade.text = buildingTemplate.levelUpgrade.ToString();
+            levelUpgrade.text = buildingTemplate.buildings[upgradesManager.BuildingUpgrades[buildingTemplateType]].levelUpgrade.ToString();
 
-            if(scoreController.Score >= buildingTemplate.cost)
+            if(scoreController.Score >= buildingTemplate.buildings[upgradesManager.BuildingUpgrades[buildingTemplateType]].cost)
             {
                 cost.color = Color.green;
             }

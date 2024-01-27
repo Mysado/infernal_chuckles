@@ -10,13 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 609b6e0e93705724ba05bbd728091965, type: 3}
-  m_Name: LavaWaveBuilding
+  m_Name: SatanThrone
   m_EditorClassIdentifier: 
-  name: Budynek Lawy
-  description: "Jest w nim bardzo gor\u0105co"
-  icon: {fileID: 0}
-  cost: 1000
-  costToNextUpgrade: 0
-  levelUpgrade: 1
-  pointsModifier: 1
-  upgrades: 0
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  buildings: []
+  buildingType: 1
