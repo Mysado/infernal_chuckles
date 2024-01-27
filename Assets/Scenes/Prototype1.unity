@@ -180,31 +180,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1161929779}
     m_Modifications:
-    - target: {fileID: 6346660356144638442, guid: 6fd4097576bec524a90dc095144ca0d7,
-        type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 1.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6346660356144638442, guid: 6fd4097576bec524a90dc095144ca0d7,
-        type: 3}
-      propertyPath: InitialModule.startColor.minColor.g
-      value: 0.76727074
-      objectReference: {fileID: 0}
-    - target: {fileID: 6346660356144638442, guid: 6fd4097576bec524a90dc095144ca0d7,
-        type: 3}
-      propertyPath: InitialModule.startColor.minColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6346660356144638442, guid: 6fd4097576bec524a90dc095144ca0d7,
-        type: 3}
-      propertyPath: EmissionModule.rateOverTime.minScalar
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 6346660356144638442, guid: 6fd4097576bec524a90dc095144ca0d7,
-        type: 3}
-      propertyPath: InitialModule.startLifetime.minScalar
-      value: 1.4
-      objectReference: {fileID: 0}
     - target: {fileID: 6900587457161753843, guid: 6fd4097576bec524a90dc095144ca0d7,
         type: 3}
       propertyPath: m_Name
@@ -443,7 +418,8 @@ Transform:
   m_LocalPosition: {x: 0.2, y: 20, z: -43.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: [{fileID: 80922299}]
+  m_Children:
+  - {fileID: 80922299}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 16.159, y: 0, z: -0.001}
 --- !u!114 &111991512
@@ -534,7 +510,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 1, g: 0.26405156, b: 0, a: 1}
   m_Intensity: 0.4
   m_Range: 10
   m_SpotAngle: 30
@@ -1544,9 +1520,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: [{targetCorrespondingSourceObject: {fileID: -7527954129569262175,
-          guid: 84d936f769a4c0048990ccffb5233951, type: 3}, insertIndex: -1, addedObject: {
-          fileID: 1324226952}}]
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -7527954129569262175, guid: 84d936f769a4c0048990ccffb5233951,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1324226952}
   m_SourcePrefab: {fileID: 100100000, guid: 84d936f769a4c0048990ccffb5233951, type: 3}
 --- !u!1 &1161929778
 GameObject:
@@ -8667,31 +8645,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1161929779}
     m_Modifications:
-    - target: {fileID: 6346660356144638442, guid: 6fd4097576bec524a90dc095144ca0d7,
-        type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 1.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6346660356144638442, guid: 6fd4097576bec524a90dc095144ca0d7,
-        type: 3}
-      propertyPath: InitialModule.startColor.minColor.g
-      value: 0.76727074
-      objectReference: {fileID: 0}
-    - target: {fileID: 6346660356144638442, guid: 6fd4097576bec524a90dc095144ca0d7,
-        type: 3}
-      propertyPath: InitialModule.startColor.minColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6346660356144638442, guid: 6fd4097576bec524a90dc095144ca0d7,
-        type: 3}
-      propertyPath: EmissionModule.rateOverTime.minScalar
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 6346660356144638442, guid: 6fd4097576bec524a90dc095144ca0d7,
-        type: 3}
-      propertyPath: InitialModule.startLifetime.minScalar
-      value: 1.4
-      objectReference: {fileID: 0}
     - target: {fileID: 6900587457161753843, guid: 6fd4097576bec524a90dc095144ca0d7,
         type: 3}
       propertyPath: m_Name
