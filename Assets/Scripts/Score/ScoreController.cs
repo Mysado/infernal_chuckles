@@ -1,14 +1,11 @@
-using System;
 using DG.Tweening;
-using Sirenix.OdinInspector;
 using Sisus.Init;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Score
 {
-    [Service]
+    [Service(typeof(ScoreController), FindFromScene = true)]
     public class ScoreController : MonoBehaviour<ComboController>
     {
         [SerializeField] private TextMeshProUGUI scorePointsText;
