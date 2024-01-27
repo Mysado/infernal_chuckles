@@ -1,11 +1,15 @@
 ﻿namespace Entity
 {
+    using System.Collections.Generic;
     using UnityEngine;
 
     public class EnemyController : EntityController
     {
         [SerializeField] private float stopDistance;
         [SerializeField] private int hp;
+        [SerializeField] private GameObject shield;
+        [SerializeField] private List<float> shieldHeights;
+        [SerializeField] private float shieldOffsetX;
         
         private Transform target;
 
@@ -15,9 +19,17 @@
             initialized = true;
         }
 
-        public void Damage()
+        public void Initialize(bool shielded)
         {
-            Destroy(gameObject);
+            if (shielded)
+            {
+                /*shield.SetActive(true);
+
+                var direction = target.position.x - transform.position.x;
+
+                shield.transform.localPosition = new Vector3(direction * shieldOffsetX,
+                    shieldHeights[Random.Range(0, shieldHeights.Count)], 0);*/
+            }
         }
         
         public void TakeDamage()

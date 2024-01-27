@@ -25,7 +25,8 @@ public class EnemySpawner : MonoBehaviour
         {
             timer = 0;
             var point = spawnPoints[Random.Range(0, spawnPoints.Count)];
-            Instantiate(enemy, point.position + new Vector3(Random.Range(spawnRange, -spawnRange), 0, 0), Quaternion.identity);
+            var newEnemy = Instantiate(enemy, point.position + new Vector3(Random.Range(spawnRange, -spawnRange), 0, 0), Quaternion.identity);
+            newEnemy.Initialize(true);
             spawnCounter++;
         }
 
