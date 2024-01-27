@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -11,10 +12,12 @@ namespace DevilSystem
         [SerializeField] private Transform endPosition;
         [SerializeField] private float lerpDuration;
         [SerializeField] private SkinnedMeshRenderer renderer;
+        
+        public event Action Devil_StopLaugh; 
 
         public void UpdateAnimationBlendShape(float percentage)
         {
-            renderer.SetBlendShapeWeight(0,percentage);
+            renderer.SetBlendShapeWeight(1,100 - (percentage * 100));
         }
 
         public void LerpPosition(float percentage)
@@ -26,6 +29,11 @@ namespace DevilSystem
         public void StartLaughAnim()
         {
             animator.SetTrigger("Laugh");
+        }
+
+        public void StopLaugh()
+        {
+            Devil_StopLaugh?.Invoke();
         }
     }
 }

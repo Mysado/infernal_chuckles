@@ -1,3 +1,4 @@
+using System;
 using Sisus.Init;
 using UnityEngine;
 
@@ -7,6 +8,12 @@ namespace DevilSystem
     public class DevilController : MonoBehaviour
     {
         [SerializeField] private Devil devil;
+        public event Action DevilController_StopLaugh;
+
+        private void Awake()
+        {
+            devil.Devil_StopLaugh += StopLaugh;
+        }
 
         public void UpdateDevilStateDependingOnExperienceFill(float fillPercentage)
         {
@@ -27,6 +34,12 @@ namespace DevilSystem
         private void StartLaugh()
         {
             devil.StartLaughAnim();
+            //Open Level Up Panel on Anim end
+        }
+
+        public void StopLaugh()
+        {
+            DevilController_StopLaugh?.Invoke();
         }
     }
 }

@@ -1,4 +1,5 @@
 using DevilSystem;
+using Sirenix.OdinInspector;
 using Sisus.Init;
 using UnityEngine;
 
@@ -16,28 +17,28 @@ namespace ExperienceSystem
         protected override void Init(DevilController devilController)
         {
             this.devilController = devilController;
+            this.devilController.DevilController_StopLaugh += LevelUp;
         }
 
+        [Button]
         public void AddExperience(int experienceGained)
         {
             experiencePoints += experienceGained;
-            CheckIfLeveled();
             ChangeDevilState();
-        }
-
-        private void CheckIfLeveled()
-        {
-            if (experiencePoints >= experienceData.experienceNeededForLevelUp[currentLevel])
-            {
-                experiencePoints = 0;
-                currentLevel++;
-            }
         }
 
         private void ChangeDevilState()
         {
-            var expFillPercentage = Mathf.Clamp(experiencePoints / experienceData.experienceNeededForLevelUp[currentLevel],0,1);
+            var expFillPercentage = Mathf.InverseLerp(0,experienceData.experienceNeededForLevelUp[currentLevel], experiencePoints);
             devilController.UpdateDevilStateDependingOnExperienceFill(expFillPercentage);
+        }
+
+        private void LevelUp()
+        {
+            Debug.Log("Leveled");
+            experiencePoints = 0;
+            currentLevel++;
+            ChangeDevilState();
         }
     }
 }
