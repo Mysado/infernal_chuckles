@@ -37,6 +37,24 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""AttackLeftDown"",
+                    ""type"": ""Button"",
+                    ""id"": ""699de98b-2ea6-493b-b1e2-6e83853b725c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AttackRightDown"",
+                    ""type"": ""Button"",
+                    ""id"": ""1700f82e-1aff-46fe-80a5-6f95925aebad"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""AttackLeft"",
                     ""type"": ""Button"",
                     ""id"": ""ddf67264-9e29-4abe-aed6-43976acf7fa2"",
@@ -132,6 +150,72 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""AttackLeft"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""One Modifier"",
+                    ""id"": ""f3796f54-abb8-491c-9fe7-6b159bac5520"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AttackLeftDown"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""bc712795-3e28-40f4-a2c7-9e646451c7ef"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AttackLeftDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""de3920b5-f97e-43e8-8f4c-d6c2f28ba093"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AttackLeftDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""One Modifier"",
+                    ""id"": ""596dccb5-2da6-471d-8e1c-f94c0e71b747"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AttackRightDown"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""786a38b6-ae67-4844-8c74-e7791b41cb8c"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AttackRightDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""8de4e04b-a2e9-4316-afc9-cc0bc5d88446"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AttackRightDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -141,6 +225,8 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
+        m_Player_AttackLeftDown = m_Player.FindAction("AttackLeftDown", throwIfNotFound: true);
+        m_Player_AttackRightDown = m_Player.FindAction("AttackRightDown", throwIfNotFound: true);
         m_Player_AttackLeft = m_Player.FindAction("AttackLeft", throwIfNotFound: true);
         m_Player_AttackRight = m_Player.FindAction("AttackRight", throwIfNotFound: true);
     }
@@ -205,6 +291,8 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player;
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Movement;
+    private readonly InputAction m_Player_AttackLeftDown;
+    private readonly InputAction m_Player_AttackRightDown;
     private readonly InputAction m_Player_AttackLeft;
     private readonly InputAction m_Player_AttackRight;
     public struct PlayerActions
@@ -212,6 +300,8 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         private @InputActions m_Wrapper;
         public PlayerActions(@InputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
+        public InputAction @AttackLeftDown => m_Wrapper.m_Player_AttackLeftDown;
+        public InputAction @AttackRightDown => m_Wrapper.m_Player_AttackRightDown;
         public InputAction @AttackLeft => m_Wrapper.m_Player_AttackLeft;
         public InputAction @AttackRight => m_Wrapper.m_Player_AttackRight;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
@@ -226,6 +316,12 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
+            @AttackLeftDown.started += instance.OnAttackLeftDown;
+            @AttackLeftDown.performed += instance.OnAttackLeftDown;
+            @AttackLeftDown.canceled += instance.OnAttackLeftDown;
+            @AttackRightDown.started += instance.OnAttackRightDown;
+            @AttackRightDown.performed += instance.OnAttackRightDown;
+            @AttackRightDown.canceled += instance.OnAttackRightDown;
             @AttackLeft.started += instance.OnAttackLeft;
             @AttackLeft.performed += instance.OnAttackLeft;
             @AttackLeft.canceled += instance.OnAttackLeft;
@@ -239,6 +335,12 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
             @Movement.canceled -= instance.OnMovement;
+            @AttackLeftDown.started -= instance.OnAttackLeftDown;
+            @AttackLeftDown.performed -= instance.OnAttackLeftDown;
+            @AttackLeftDown.canceled -= instance.OnAttackLeftDown;
+            @AttackRightDown.started -= instance.OnAttackRightDown;
+            @AttackRightDown.performed -= instance.OnAttackRightDown;
+            @AttackRightDown.canceled -= instance.OnAttackRightDown;
             @AttackLeft.started -= instance.OnAttackLeft;
             @AttackLeft.performed -= instance.OnAttackLeft;
             @AttackLeft.canceled -= instance.OnAttackLeft;
@@ -265,6 +367,8 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     public interface IPlayerActions
     {
         void OnMovement(InputAction.CallbackContext context);
+        void OnAttackLeftDown(InputAction.CallbackContext context);
+        void OnAttackRightDown(InputAction.CallbackContext context);
         void OnAttackLeft(InputAction.CallbackContext context);
         void OnAttackRight(InputAction.CallbackContext context);
     }

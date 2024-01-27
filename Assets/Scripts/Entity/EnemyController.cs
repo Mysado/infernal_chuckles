@@ -28,11 +28,11 @@
 
         public void Initialize(bool shielded)
         {
-            if (shielded)
-                shield.SetActive(true);
+            //if (shielded)
+                //shield.SetActive(true);
         }
         
-        public void TakeDamage()
+        public void TakeDamage(AttackPosition attackPosition)
         {
             hp--;
             rigidbody.AddForce(transform.right * 20,ForceMode.Impulse);

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using Entity;
 using UnityEngine;
 
@@ -12,49 +13,41 @@ public enum AttackPosition
 public class DamageDealer : MonoBehaviour
 {
     [SerializeField] private Animator animator;
-    [SerializeField] private Transform lowAttack;
-    [SerializeField] private Transform hightAttack;
+    [SerializeField] private float attackRange;
 
+    public bool IsStunned = false;
     private RaycastHit[] raycastHits;
-    public void Attack(AttackPosition attackPosition)
+    public bool Attack(AttackPosition attackPosition)
     {
-        animator.Play("ImpArmature|ImpIAttack",0,0);
-        Vector3 hitOrigin = default;
-        switch (attackPosition)
+        if (IsStunned)
         {
-            case AttackPosition.middle:
-                hitOrigin = transform.position;
-                break;
-            case AttackPosition.low:
-                hitOrigin = lowAttack.position;
-                break;
-            case AttackPosition.high:
-                hitOrigin = hightAttack.position;
-                break;
+            animator.Play("ImpArmature|ImpIStun",0,0);
+            return false;
         }
-        raycastHits = Physics.RaycastAll(hitOrigin, transform.right,2);
+        animator.Play("ImpArmature|ImpIAttack",0,0);
+        raycastHits = Physics.RaycastAll(transform.position, transform.right,attackRange);
         foreach (var hit in raycastHits)
         {
-            if (hit.collider.CompareTag("Shield"))
-            {
-                break;
-            }
             if (hit.collider.CompareTag("Enemy"))
             {
-                DealDamage(hit.collider.gameObject);
-                break;
+                DealDamage(hit.collider.gameObject, attackPosition);
+                return true;
             }
         }
+        StunPlayer();
+        return false;
     }
 
-    private void DealDamage(GameObject other)
+    private void DealDamage(GameObject other, AttackPosition attackPosition)
     {
         var enemy = other.GetComponent<EnemyController>();
-        enemy.TakeDamage();
+        enemy.TakeDamage(attackPosition);
     }
 
     private void StunPlayer()
     {
-        
+        animator.Play("ImpArmature|ImpIStun",0,0);
+        IsStunned = true;
+        DOTween.Sequence().PrependInterval(0.5f).AppendCallback(() => IsStunned = false);
     }
 }
