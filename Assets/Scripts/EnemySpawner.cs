@@ -16,7 +16,6 @@ public class EnemySpawner : MonoBehaviour<ExperienceController>
     [SerializeField] private List<Transform> spawnPoints;
     [SerializeField] private EnemyController enemy;
     [SerializeField] private UpgradesManager upgradesManager;
-    [SerializeField] private List<Sprite> healths;
     [SerializeField] private ExperienceController experienceController;
 
     private float timer;
@@ -39,7 +38,7 @@ public class EnemySpawner : MonoBehaviour<ExperienceController>
                 timer = 0;
                 var point = spawnPoints[Random.Range(0, spawnPoints.Count)];
                 var newEnemy = Instantiate(enemy, point.position + new Vector3(Random.Range(spawnRange, -spawnRange), 0, 0), Quaternion.identity);
-                newEnemy.Initialize(experienceController, true, healths);
+                newEnemy.Initialize(experienceController, true);
                 spawnCounter++;
             }
 

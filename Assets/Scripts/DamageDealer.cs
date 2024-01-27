@@ -24,15 +24,21 @@ public class DamageDealer : MonoBehaviour
         }
         animator.Play("ImpArmature|ImpIAttack",0,0);
         raycastHits = Physics.RaycastAll(transform.position, transform.right,attackRange);
+        var enemyDamaged = false;
         foreach (var hit in raycastHits)
         {
             if (hit.collider.CompareTag("Enemy"))
             {
                 var enemy = hit.collider.GetComponent<EnemyController>();
-                if (enemy.CanMove)
+                if (enemy.CanMove && !enemyDamaged)
                 {
                     DealDamage(enemy, attackPosition);
-                    return true;
+                    enemyDamaged = true;
+                }
+
+                if (enemy.CanMove && enemyDamaged)
+                {
+                    enemy.KnockBack();
                 }
             }
         }

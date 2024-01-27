@@ -2,6 +2,7 @@
 using ExperienceSystem;
 using UnityEngine.UI;
 using Sisus.Init;
+using Unity.VisualScripting;
 
 namespace Entity
 {
@@ -20,7 +21,8 @@ namespace Entity
         [SerializeField] private float stopDistance;
         [SerializeField] private int hp;
         [SerializeField] private List<GameObject> shields;
-        [SerializeField] private Image healthImage;
+        [SerializeField] private Transform healthParent;
+        [SerializeField] private Sprite healthSprite;
         [SerializeField] protected float speed;
 
         public ShieldType ShieldType{ get; private set; }
@@ -34,9 +36,9 @@ namespace Entity
         private bool canMove;
         private bool initialized;
         private UpgradesManager upgradesManager;
+        private List<Image> healths;
 
         public bool IsDead;
-        private List<Sprite> healths;
         
         protected void Update()
         {
@@ -58,12 +60,20 @@ namespace Entity
             upgradesManager.FinishStage += KillEmAll;
         }
 
-        public void Initialize(ExperienceController experienceController, bool shielded, List<Sprite> healths)
+        public void Initialize(ExperienceController experienceController, bool shielded)
         {
+            healths = new List<Image>();
             this.experienceController = experienceController;
             transform.rotation = Quaternion.Euler(0, transform.position.x > targetTransform.position.x ? 0 : 180, 0);
-            this.healths = healths;
-            healthImage.sprite = healths[hp];
+            for (int i = 0; i < hp; i++)
+            {
+                var sprite = new GameObject();
+                var image = sprite.AddComponent<Image>();
+                sprite.transform.parent = healthParent;
+                sprite.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                image.sprite = healthSprite;
+                healths.Add(image);
+            }
             if (!shielded) 
                 return;
            
@@ -74,15 +84,16 @@ namespace Entity
         
         public void TakeDamage(AttackPosition attackPosition)
         {
-            rigidbody.AddForce(transform.right * 7,ForceMode.Impulse);
+            rigidbody.AddForce(transform.right * Random.Range(5,10),ForceMode.Impulse);
             canMove = false;
             DOTween.Sequence().PrependInterval(1f).AppendCallback(() => canMove = true);
             
             if (IsTargetingShield(attackPosition))
                 return;
             
+            Destroy(healths[0].gameObject);
+            healths.RemoveAt(0);
             hp--;
-            healthImage.sprite = healths[hp];
             if (hp <= 0)
             {
                 IsDead = true;
@@ -92,6 +103,13 @@ namespace Entity
                 experienceController.AddExperience(2);
                 Destroy(gameObject, 2);
             }
+        }
+        
+        public void KnockBack()
+        {
+            rigidbody.AddForce(transform.right * Random.Range(5,10),ForceMode.Impulse);
+            canMove = false;
+            DOTween.Sequence().PrependInterval(1f).AppendCallback(() => canMove = true);
         }
 
         private bool IsTargetingShield(AttackPosition attackPosition)
