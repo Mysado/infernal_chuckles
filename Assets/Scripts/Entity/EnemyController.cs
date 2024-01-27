@@ -1,16 +1,19 @@
 ﻿namespace Entity
 {
+    using System;
     using System.Collections.Generic;
+    using Shields;
     using UnityEngine;
+    using Random = UnityEngine.Random;
 
     public class EnemyController : EntityController
     {
         [SerializeField] private float stopDistance;
         [SerializeField] private int hp;
-        [SerializeField] private GameObject shield;
-        /*[SerializeField] private List<float> shieldHeights;
-        [SerializeField] private float shieldOffsetX;*/
-        
+        [SerializeField] private Dictionary<ShieldType, GameObject> shields;
+
+        public ShieldType ShieldType{ get; private set; }
+
         private Transform target;
         private Rigidbody rigidbody;
         private Collider collider;
@@ -28,8 +31,14 @@
 
         public void Initialize(bool shielded)
         {
-            //if (shielded)
-                //shield.SetActive(true);
+            transform.rotation = Quaternion.Euler(0, transform.position.x > target.position.x ? 0 : 180, 0);
+            
+            if (!shielded) 
+                return;
+           
+            var shieldTypes = Enum.GetValues(typeof(ShieldType));
+            ShieldType = (ShieldType)shieldTypes.GetValue(Random.Range(1, shieldTypes.Length));
+            shields[ShieldType].SetActive(true);
         }
         
         public void TakeDamage(AttackPosition attackPosition)
@@ -40,7 +49,8 @@
             {
                 IsDead = true;
                 collider.enabled = false;
-                rigidbody.AddForce(transform.right * 20,ForceMode.Impulse);
+                rigidbody.AddForce(transform.right * 80,ForceMode.Impulse);
+                Destroy(gameObject, 2);
             }
         }
         

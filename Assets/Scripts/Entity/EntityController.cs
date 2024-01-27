@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using Entity;
 using InputSystem;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
-public abstract class EntityController : MonoBehaviour
+public abstract class EntityController : SerializedMonoBehaviour
 {
     [SerializeField] protected float speed;
     

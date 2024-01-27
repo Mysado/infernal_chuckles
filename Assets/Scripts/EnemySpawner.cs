@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using Entity;
+using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-public class EnemySpawner : MonoBehaviour
+public class EnemySpawner : SerializedMonoBehaviour
 {
     [SerializeField] private float spawnInterval;
     [SerializeField] private float spawnBoost;

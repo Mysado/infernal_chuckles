@@ -24,6 +24,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "AttackRight",
+                    "type": "Button",
+                    "id": "f3fbf073-707e-4115-8442-c9b53e3aa7ee",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "AttackRightDown",
                     "type": "Button",
                     "id": "1700f82e-1aff-46fe-80a5-6f95925aebad",
@@ -36,15 +45,6 @@
                     "name": "AttackLeft",
                     "type": "Button",
                     "id": "ddf67264-9e29-4abe-aed6-43976acf7fa2",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "AttackRight",
-                    "type": "Button",
-                    "id": "f3fbf073-707e-4115-8442-c9b53e3aa7ee",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -106,17 +106,6 @@
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "1ab9a3a0-5b92-4203-a007-db218a3be081",
-                    "path": "<Keyboard>/rightArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "AttackRight",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 },
                 {
                     "name": "",
@@ -194,6 +183,17 @@
                     "action": "AttackRightDown",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "1ab9a3a0-5b92-4203-a007-db218a3be081",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AttackRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
