@@ -24,5 +24,11 @@ public class Building
     public int cost;
     public int levelUpgrade;
     public int pointsModifier;
+    public float fireBallCooldown;
+    public float whipCooldown;
+    public float breakingLegsCooldown;
+    public int whipInstaKillValue;
+    public int speedReduction;
+    public int increaseMaxHP;
     public int level;
 }

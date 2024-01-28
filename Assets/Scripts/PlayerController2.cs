@@ -12,11 +12,8 @@ public class PlayerController2 : MonoBehaviour<InputManager, ComboController, Sc
     [SerializeField] private DamageDealer spear;
     [SerializeField] private TextMeshProUGUI text;
     [SerializeField] private GameObject barun;
-    [SerializeField] private float fireBallCooldown;
-    [SerializeField] private float breakLegsCooldown;
-    [SerializeField] private float whipCooldown;
+     
     [SerializeField] private GameObject fireBallPrefab;
-    [SerializeField] private int instaKillValue;
     [SerializeField] private Transform barunSpawnPoint;
     [SerializeField] private EnemySpawner enemySpawner;
 
@@ -29,9 +26,16 @@ public class PlayerController2 : MonoBehaviour<InputManager, ComboController, Sc
     private bool canFireBall = true;
     private bool canBreakLegs = true;
     private bool canUseWhip = true;
-    private bool hasFireBall = true;
-    private bool hasWhip = true;
-    private bool hasBreakingLegs = true;
+
+    public float fireBallCooldown;
+    public float breakLegsCooldown;
+    public float whipCooldown;
+    public int instaKillValue;
+    public int MaxHealth { set => maxHealth = value; }
+
+    public bool hasFireBall = false;
+    public bool hasWhip = false;
+    public bool hasBreakingLegs = false;
 
     
     protected override void Init(InputManager inputManager, ComboController comboController, ScoreController scoreController)
@@ -50,11 +54,6 @@ public class PlayerController2 : MonoBehaviour<InputManager, ComboController, Sc
         inputManager.UseWhip += InputManager_UseWhip;
         inputManager.BreakLegs += InputManager_BreakLegs;
         text.text = "HP = " + currentHealth;
-    }
-
-    private void Update()
-    {
-        
     }
 
     private void RotateLeft()

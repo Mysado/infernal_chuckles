@@ -13,6 +13,7 @@ namespace Entity
     using DG.Tweening;
     using UnityEngine.UI;
 
+
     public class EnemyController : MonoBehaviour
     {
         [SerializeField] private float stopDistance;
@@ -45,12 +46,12 @@ namespace Entity
         private static readonly int attack = Animator.StringToHash("Attack");
         private static readonly int die = Animator.StringToHash("Die");
         private static readonly int knockback = Animator.StringToHash("Knockback");
-
+        
         protected void Update()
         {
             if (!initialized)
                 return;
-        
+
             Move();
         }
     
