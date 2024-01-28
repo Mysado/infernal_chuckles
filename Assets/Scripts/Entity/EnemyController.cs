@@ -171,7 +171,7 @@ namespace Entity
                     target.TakeDamage();
                     IsDead = true;
                     Destroy(gameObject, 0.1f);
-                    Instantiate(dieParticle,transform,false);
+                    Instantiate(dieParticle, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
                 });
             }
             
