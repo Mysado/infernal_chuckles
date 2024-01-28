@@ -6234,10 +6234,10 @@ MonoBehaviour:
   traitPanel: {fileID: 2000306358}
   allBuildingsPool:
   - {fileID: 2443191144036592507, guid: c5019811ed4cede4b92c5ed7ca9d7eb8, type: 3}
-  - {fileID: 2443191144036592507, guid: 1d698617291c1704c85e8c60f832ac5b, type: 3}
-  - {fileID: 2443191144036592507, guid: 88ccd6b3839044541a8e5792016fa94b, type: 3}
-  - {fileID: 2443191144036592507, guid: 000f519f00c811f4ca0dfa589ee9e2e6, type: 3}
-  - {fileID: 2443191144036592507, guid: 2fc1265613d28e14fb2fb1ebaea565ad, type: 3}
+  - {fileID: 3655279851214896291, guid: 024c60196fe791e4abdb77965004852f, type: 3}
+  - {fileID: 7095017993839120452, guid: dfadc7456c770664dab27a2f90d3350d, type: 3}
+  - {fileID: 5428640133701563460, guid: 4cb1a087957333946adb22bf3408d7b7, type: 3}
+  - {fileID: 3226118356025974691, guid: 41b3293522e9fae4d9f4b48de7ace374, type: 3}
   upgradeManager: {fileID: 740579139}
 --- !u!114 &740579139
 MonoBehaviour:
@@ -13687,6 +13687,103 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fd4097576bec524a90dc095144ca0d7, type: 3}
+--- !u!1001 &8263957052135226334
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2007160659025109741, guid: 4cb1a087957333946adb22bf3408d7b7, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007160659025109741, guid: 4cb1a087957333946adb22bf3408d7b7, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007160659025109741, guid: 4cb1a087957333946adb22bf3408d7b7, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007160659025109741, guid: 4cb1a087957333946adb22bf3408d7b7, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007160659025109741, guid: 4cb1a087957333946adb22bf3408d7b7, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007160659025109741, guid: 4cb1a087957333946adb22bf3408d7b7, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007160659025109741, guid: 4cb1a087957333946adb22bf3408d7b7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 287.7113
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007160659025109741, guid: 4cb1a087957333946adb22bf3408d7b7, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 418.0924
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007160659025109741, guid: 4cb1a087957333946adb22bf3408d7b7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007160659025109741, guid: 4cb1a087957333946adb22bf3408d7b7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007160659025109741, guid: 4cb1a087957333946adb22bf3408d7b7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007160659025109741, guid: 4cb1a087957333946adb22bf3408d7b7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007160659025109741, guid: 4cb1a087957333946adb22bf3408d7b7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007160659025109741, guid: 4cb1a087957333946adb22bf3408d7b7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007160659025109741, guid: 4cb1a087957333946adb22bf3408d7b7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007160659025109741, guid: 4cb1a087957333946adb22bf3408d7b7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -301
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007160659025109741, guid: 4cb1a087957333946adb22bf3408d7b7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007160659025109741, guid: 4cb1a087957333946adb22bf3408d7b7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007160659025109741, guid: 4cb1a087957333946adb22bf3408d7b7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2007160659025109741, guid: 4cb1a087957333946adb22bf3408d7b7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5428640133701563460, guid: 4cb1a087957333946adb22bf3408d7b7, type: 3}
+      propertyPath: m_Name
+      value: LavaPoolPanel
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4cb1a087957333946adb22bf3408d7b7, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -13712,3 +13809,4 @@ SceneRoots:
   - {fileID: 161025100}
   - {fileID: 165261632}
   - {fileID: 1856614011}
+  - {fileID: 8263957052135226334}
