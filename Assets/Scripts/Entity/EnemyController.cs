@@ -114,8 +114,7 @@ namespace Entity
                 hp = 0;
                 if (hp <= 0)
                 {
-                    soundManager.Play(deathSoundType, transform.position, 1.5f);
-                    shields[(int)ShieldType - 1].SetActive(false);
+                    soundManager.Play(deathSoundType, transform.position, 1.5f, 0.3f);
                     animator.SetTrigger(die);
                     IsDead = true;
                     rigidbody.DOJump(transform.right * 13 - (transform.up * 4), 7, 1, 1.5f)
@@ -123,6 +122,7 @@ namespace Entity
                     transform.DOShakeRotation(1.5f);
                     experienceController.AddExperience(2);
                     Destroy(gameObject, 2);
+                    return;
                 }
                 
             }
@@ -149,8 +149,8 @@ namespace Entity
                 soundManager.Play(deathSoundType,transform.position,1.5f);
                 animator.SetTrigger(die);
                 IsDead = true; 
-                rigidbody.DOJump(transform.right * 13 - (transform.up * 4), 7, 1, 1.5f)
-                    .OnComplete(() => soundManager.Play(SoundType.EnemyDropToLava,transform.position,0.65f));
+                StartCoroutine(PlayDeathSound());
+                rigidbody.DOJump(transform.right * 13 - (transform.up * 4), 7, 1, 1.5f);
                 transform.DOShakeRotation(1.5f);
                 experienceController.AddExperience(2);
                 Destroy(gameObject, 2);
@@ -159,6 +159,12 @@ namespace Entity
             {
                 soundManager.Play(SoundType.EnemyDamaged,transform.position,0.8f);
             }
+        }
+
+        private IEnumerator PlayDeathSound()
+        {
+            yield return new WaitForSeconds(0.8f);
+            soundManager.Play(SoundType.EnemyDropToLava, transform.position, 0.65f);
         }
 
         public void BrokenLegs(int duration)
