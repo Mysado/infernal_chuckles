@@ -11,9 +11,10 @@ namespace DevilSystem
     public class DevilController : MonoBehaviour
     {
         [SerializeField] private Devil devil;
+        [SerializeField] private UpgradesManager upgradesManager;
+        [SerializeField] private ParticleSystem fireBoomParticles;
         public event Action DevilController_ResetDevil;
 
-        [SerializeField] private UpgradesManager upgradesManager;
         private void Awake()
         {
             devil.Devil_StopLaugh += OpenUpgradeMenu;
@@ -27,13 +28,13 @@ namespace DevilSystem
             devil.LerpPosition(fillPercentage);
             if (fillPercentage >= 1)
             {
-                MakeBoom();
                 StartLaugh();
             }
         }
 
         private void MakeBoom()
         {
+            fireBoomParticles.Play();
             //kill all enemies and make them not spawn for duration of laugh
         }
 
@@ -45,6 +46,7 @@ namespace DevilSystem
 
         private void OpenUpgradeMenu()
         {
+            MakeBoom();
             upgradesManager.StartUpgrade();
         }
 
