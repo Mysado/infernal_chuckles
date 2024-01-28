@@ -1,5 +1,6 @@
 ﻿using DevilSystem;
 using Sisus.Init;
+using Sound;
 
 namespace Entity
 {
@@ -37,6 +38,7 @@ namespace Entity
         private bool canMove;
         private bool initialized;
         private UpgradesManager upgradesManager;
+        private SoundManager soundManager;
         private List<Image> healths;
         private Sequence attackSequence;
 
@@ -65,6 +67,7 @@ namespace Entity
             collider = GetComponentInChildren<Collider>();
             StartCoroutine(Initializator());
             upgradesManager = FindAnyObjectByType<UpgradesManager>();
+            soundManager = FindAnyObjectByType<SoundManager>();
             upgradesManager.FinishStage += KillEmAll;
         }
 
@@ -114,12 +117,18 @@ namespace Entity
             hp--;
             if (hp <= 0)
             {
+                soundManager.Play(SoundType.EnemyDeath,transform.position,1.5f);
                 animator.SetTrigger(die);
                 IsDead = true; 
-                rigidbody.DOJump(transform.right * 13 - (transform.up * 4), 7, 1, 1.5f);
+                rigidbody.DOJump(transform.right * 13 - (transform.up * 4), 7, 1, 1.5f)
+                    .OnComplete(() => soundManager.Play(SoundType.EnemyDropToLava,transform.position,0.65f));
                 transform.DOShakeRotation(1.5f);
                 experienceController.AddExperience(2);
                 Destroy(gameObject, 2);
+            }
+            else
+            {
+                soundManager.Play(SoundType.EnemyDamaged,transform.position,0.8f);
             }
         }
 

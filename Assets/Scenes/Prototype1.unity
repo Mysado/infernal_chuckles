@@ -7132,10 +7132,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6809910917739649841, guid: a7fad2e56b405d248b8c8062de3ee177, type: 3}
-      propertyPath: Loop
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8855036001816123057, guid: a7fad2e56b405d248b8c8062de3ee177, type: 3}
       propertyPath: upgradesManager
       value: 
@@ -14095,6 +14091,55 @@ PrefabInstance:
       propertyPath: serializationData.Prefab
       value: 
       objectReference: {fileID: 1489061407841429360, guid: e82612006402956419e117c88259d21d, type: 3}
+    - target: {fileID: 1489061407841429360, guid: e82612006402956419e117c88259d21d, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1489061407841429360, guid: e82612006402956419e117c88259d21d, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[0]
+      value: '"path":"sounds","add_keys":{"$id":0,"$type":"System.Object[], mscorlib","$rlength":3,"$rcontent":[{"$id":1,"$type":"Sound.SoundType,
+        Assembly-CSharp",0},{"$id":2,"$type":"Sound.SoundType, Assembly-CSharp",3},{"$id":3,"$type":"Sound.SoundType,
+        Assembly-CSharp",4}]},"remove_keys":null'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1489061407841429360, guid: e82612006402956419e117c88259d21d, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[1]
+      value: '"path":"sounds.{0es}","value":{"$id":0,"$type":"UnityEngine.AudioClip[],
+        UnityEngine.AudioModule","$rlength":1,"$rcontent":[$eref:0]}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1489061407841429360, guid: e82612006402956419e117c88259d21d, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[2]
+      value: '"path":"sounds.{0es}.[0]","value":$eref:0'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1489061407841429360, guid: e82612006402956419e117c88259d21d, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[3]
+      value: '"path":"sounds.{3es}","value":{"$id":0,"$type":"UnityEngine.AudioClip[],
+        UnityEngine.AudioModule","$rlength":1,"$rcontent":[$eref:0]}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1489061407841429360, guid: e82612006402956419e117c88259d21d, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[4]
+      value: '"path":"sounds.{3es}.[0]","value":$eref:0'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1489061407841429360, guid: e82612006402956419e117c88259d21d, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[5]
+      value: '"path":"sounds.{4es}","value":{"$id":0,"$type":"UnityEngine.AudioClip[],
+        UnityEngine.AudioModule","$rlength":1,"$rcontent":[$eref:1]}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1489061407841429360, guid: e82612006402956419e117c88259d21d, type: 3}
+      propertyPath: serializationData.PrefabModifications.Array.data[6]
+      value: '"path":"sounds.{4es}.[0]","value":$eref:1'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1489061407841429360, guid: e82612006402956419e117c88259d21d, type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1489061407841429360, guid: e82612006402956419e117c88259d21d, type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: f344ec3965c1a484d88a8af21e77a588, type: 3}
+    - target: {fileID: 1489061407841429360, guid: e82612006402956419e117c88259d21d, type: 3}
+      propertyPath: serializationData.PrefabModificationsReferencedUnityObjects.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: df4fe83b0009202418f97b11660ecda8, type: 3}
     - target: {fileID: 2767103913908289547, guid: e82612006402956419e117c88259d21d, type: 3}
       propertyPath: m_Name
       value: SoundManager

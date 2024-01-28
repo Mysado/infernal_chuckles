@@ -5,5 +5,7 @@
         EnemyDamaged,
         PlayerDamaged,
         ShieldHit,
+        EnemyDeath,
+        EnemyDropToLava
     }
 }
