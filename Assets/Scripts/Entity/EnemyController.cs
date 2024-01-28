@@ -110,8 +110,15 @@ namespace Entity
                     animator.SetTrigger(walk);
                 });
 
-                Destroy(healths[0].gameObject);
-                healths.RemoveAt(0);
+                if (healths.Count > 0)
+                {
+                    for (int i = 0; i < healths.Count; i++)
+                    {
+                        Destroy(healths[i].gameObject);
+                        healths.RemoveAt(0);
+                    }
+                }
+
                 hp = 0;
                 if (hp <= 0)
                 {
@@ -141,8 +148,8 @@ namespace Entity
                 animator.ResetTrigger(knockback);
                 animator.SetTrigger(walk);
             });
-            
-            Destroy(healths[0].gameObject);
+            if(healths.Count > 0)
+                Destroy(healths[0].gameObject);
             healths.RemoveAt(0);
             hp--;
             if (hp <= 0)

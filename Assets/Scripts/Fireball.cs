@@ -1,3 +1,4 @@
+using System;
 using Entity;
 using Score;
 using Sisus.Init;
@@ -18,6 +19,12 @@ public class Fireball : MonoBehaviour<ComboController, ScoreController>
     {
         this.comboController = comboController;
         this.scoreController = scoreController;
+    }
+
+    private void Start()
+    {
+        comboController = FindAnyObjectByType<ComboController>();
+        scoreController = FindAnyObjectByType<ScoreController>();
     }
 
     private void Update()

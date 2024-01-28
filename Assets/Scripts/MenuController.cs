@@ -8,6 +8,8 @@ public class MenuController : MonoBehaviour
 {
     [SerializeField] private Animator lucjusz;
     [SerializeField] private AudioSource laughSFX;
+
+    private bool started = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,11 +23,15 @@ public class MenuController : MonoBehaviour
 
     public void LoadGame()
     {
-        DOTween.Sequence().AppendCallback(() =>
+        if (!started)
         {
-        lucjusz.Play("Armature|Laugh03", 0, 0);
-        laughSFX.Play();
-        }).AppendInterval(5f)
-            .AppendCallback(() => SceneManager.LoadScene("Prototype1"));
+            started = true;
+            DOTween.Sequence().AppendCallback(() =>
+                {
+                    lucjusz.Play("Armature|Laugh03", 0, 0);
+                    laughSFX.Play();
+                }).AppendInterval(5f)
+                .AppendCallback(() => SceneManager.LoadScene("Prototype1"));
+        }
     }
 }
