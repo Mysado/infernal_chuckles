@@ -6,6 +6,7 @@ using System.Linq;
 using Sound;
 using TMPro;
 using UnityEngine;
+using Unity.VisualScripting;
 
 public class PlayerController2 : MonoBehaviour<InputManager, ComboController, ScoreController>
 {
@@ -17,13 +18,15 @@ public class PlayerController2 : MonoBehaviour<InputManager, ComboController, Sc
     [SerializeField] private GameObject fireBallPrefab;
     [SerializeField] private Transform barunSpawnPoint;
     [SerializeField] private EnemySpawner enemySpawner;
+    [SerializeField] private CanvasGroup fireWallIcon;
+    [SerializeField] private CanvasGroup whipIcon;
+    [SerializeField] private CanvasGroup breakLegsIcon;
 
     private int currentHealth;
     private InputManager inputManager;
     private ComboController comboController;
     private SoundManager soundManager;
     private ScoreController scoreController;
-    private Sequence sequence;
 
     private bool canFireBall = true;
     private bool canBreakLegs = true;
@@ -125,10 +128,12 @@ public class PlayerController2 : MonoBehaviour<InputManager, ComboController, Sc
         {
             if (canFireBall)
             {
+                fireWallIcon.alpha = 0.2f;
                 Instantiate(fireBallPrefab, transform.position, Quaternion.identity);
                 GameObject clone = Instantiate(fireBallPrefab, transform.position, Quaternion.identity);
                 clone.transform.Rotate(0, 180, 0);
                 canFireBall = false;
+                fireWallIcon.DOFade(0.5f, fireBallCooldown).OnComplete(() => fireWallIcon.alpha = 1);
                 DOTween.Sequence().AppendInterval(fireBallCooldown).AppendCallback(() => canFireBall = true);
             }
         }
@@ -139,6 +144,7 @@ public class PlayerController2 : MonoBehaviour<InputManager, ComboController, Sc
         {
             if (canUseWhip)
             {
+                whipIcon.alpha = 0.2f;
                 RaycastHit[] raycastHitsRight;
                 RaycastHit[] raycastHitsLeft;
                 RaycastHit[] raycastHitsSum;
@@ -159,6 +165,7 @@ public class PlayerController2 : MonoBehaviour<InputManager, ComboController, Sc
                     }
                 }
                 canUseWhip = false;
+                whipIcon.DOFade(0.5f, whipCooldown).OnComplete(() => whipIcon.alpha = 1);
                 DOTween.Sequence().AppendInterval(whipCooldown).AppendCallback(() => canUseWhip = true);
             }
         }
@@ -170,6 +177,7 @@ public class PlayerController2 : MonoBehaviour<InputManager, ComboController, Sc
         {
             if (canBreakLegs)
             {
+                breakLegsIcon.alpha = 0.2f;
                 RaycastHit[] raycastHitsRight;
                 RaycastHit[] raycastHitsLeft;
                 RaycastHit[] raycastHitsSum;
@@ -187,6 +195,7 @@ public class PlayerController2 : MonoBehaviour<InputManager, ComboController, Sc
                     }
                 }
                 canBreakLegs = false;
+                breakLegsIcon.DOFade(0.5f, breakLegsCooldown).OnComplete(() => breakLegsIcon.alpha = 1);
                 DOTween.Sequence().AppendInterval(breakLegsCooldown).AppendCallback(() => canBreakLegs = true);
             }
         }

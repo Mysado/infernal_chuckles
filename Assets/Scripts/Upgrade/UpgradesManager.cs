@@ -10,6 +10,10 @@ namespace Upgrade
     {
         [SerializeField] private UpgradesRandomizer upgradesRandomizer;
         [SerializeField] private PlayerController2 playerController;
+        [SerializeField] private CanvasGroup fireWallIcon;
+        [SerializeField] private CanvasGroup whipIcon;
+        [SerializeField] private CanvasGroup breakLegsIcon;
+
         private UpgradeTrait trait;
         private ScoreController scoreController;
 
@@ -82,17 +86,20 @@ namespace Upgrade
         {
             playerController.hasFireBall = true;
             playerController.fireBallCooldown = trait.buildings[buildingUpgrades[trait.buildingType]].fireBallCooldown;
+            fireWallIcon.alpha = 1;
         }
         private void UpgradeWheelOfTorture(UpgradeTrait trait)
         {
             playerController.hasBreakingLegs = true;
             playerController.breakLegsCooldown = trait.buildings[buildingUpgrades[trait.buildingType]].breakingLegsCooldown;
+            breakLegsIcon.alpha = 1;
         }
         private void UpgradeWhip(UpgradeTrait trait)
         {
             playerController.hasWhip = true;
             playerController.whipCooldown = trait.buildings[buildingUpgrades[trait.buildingType]].whipCooldown;
             playerController.instaKillValue = trait.buildings[buildingUpgrades[trait.buildingType]].whipInstaKillValue;
+            whipIcon.alpha = 1;
         }
         private void UpgradeSoulSucker(UpgradeTrait trait)
         {
