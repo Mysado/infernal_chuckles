@@ -10184,7 +10184,7 @@ PrefabInstance:
       objectReference: {fileID: 1503092818}
     - target: {fileID: 7570937377753465779, guid: 192d06deea06448429a3ddfa7337d047, type: 3}
       propertyPath: hasFireBall
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7570937377753465779, guid: 192d06deea06448429a3ddfa7337d047, type: 3}
       propertyPath: enemySpawner

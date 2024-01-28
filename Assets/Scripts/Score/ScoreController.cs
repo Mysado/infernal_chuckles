@@ -38,8 +38,9 @@ namespace Score
         
         public void AddScorePoints(int scorePointsToAdd)
         {
+            scorePointsToAdd = 4;
             var comboPoints = scorePointsToAdd * comboController.ComboCounter / 100;
-            Score += (scorePointsToAdd + comboPoints);
+            Score += (scorePointsToAdd + comboPoints * scoreModifier);
             RefreshScorePointsText();
         }
 
