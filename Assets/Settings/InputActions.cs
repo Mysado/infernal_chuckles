@@ -89,6 +89,33 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CastFireball"",
+                    ""type"": ""Button"",
+                    ""id"": ""7d013973-5bfc-4d92-ad87-af38467068a6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""UseWhip"",
+                    ""type"": ""Button"",
+                    ""id"": ""1e32cdf5-3156-425c-8b10-ceb1aca078c0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""BreakLegs"",
+                    ""type"": ""Button"",
+                    ""id"": ""387db52f-5f5d-4ade-971b-9af23c9521a2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -300,6 +327,39 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""AttackLeftTop"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e2380a8a-491a-47e4-aa54-581573a81007"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CastFireball"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""012c983c-db18-4471-8189-562949cdc917"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UseWhip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cb799dc7-1aa2-458e-92ab-af47a68e84ba"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""BreakLegs"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -315,6 +375,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_Player_AttackRightTop = m_Player.FindAction("AttackRightTop", throwIfNotFound: true);
         m_Player_AttackLeft = m_Player.FindAction("AttackLeft", throwIfNotFound: true);
         m_Player_AttackRight = m_Player.FindAction("AttackRight", throwIfNotFound: true);
+        m_Player_CastFireball = m_Player.FindAction("CastFireball", throwIfNotFound: true);
+        m_Player_UseWhip = m_Player.FindAction("UseWhip", throwIfNotFound: true);
+        m_Player_BreakLegs = m_Player.FindAction("BreakLegs", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -383,6 +446,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_AttackRightTop;
     private readonly InputAction m_Player_AttackLeft;
     private readonly InputAction m_Player_AttackRight;
+    private readonly InputAction m_Player_CastFireball;
+    private readonly InputAction m_Player_UseWhip;
+    private readonly InputAction m_Player_BreakLegs;
     public struct PlayerActions
     {
         private @InputActions m_Wrapper;
@@ -394,6 +460,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         public InputAction @AttackRightTop => m_Wrapper.m_Player_AttackRightTop;
         public InputAction @AttackLeft => m_Wrapper.m_Player_AttackLeft;
         public InputAction @AttackRight => m_Wrapper.m_Player_AttackRight;
+        public InputAction @CastFireball => m_Wrapper.m_Player_CastFireball;
+        public InputAction @UseWhip => m_Wrapper.m_Player_UseWhip;
+        public InputAction @BreakLegs => m_Wrapper.m_Player_BreakLegs;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -424,6 +493,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @AttackRight.started += instance.OnAttackRight;
             @AttackRight.performed += instance.OnAttackRight;
             @AttackRight.canceled += instance.OnAttackRight;
+            @CastFireball.started += instance.OnCastFireball;
+            @CastFireball.performed += instance.OnCastFireball;
+            @CastFireball.canceled += instance.OnCastFireball;
+            @UseWhip.started += instance.OnUseWhip;
+            @UseWhip.performed += instance.OnUseWhip;
+            @UseWhip.canceled += instance.OnUseWhip;
+            @BreakLegs.started += instance.OnBreakLegs;
+            @BreakLegs.performed += instance.OnBreakLegs;
+            @BreakLegs.canceled += instance.OnBreakLegs;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -449,6 +527,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @AttackRight.started -= instance.OnAttackRight;
             @AttackRight.performed -= instance.OnAttackRight;
             @AttackRight.canceled -= instance.OnAttackRight;
+            @CastFireball.started -= instance.OnCastFireball;
+            @CastFireball.performed -= instance.OnCastFireball;
+            @CastFireball.canceled -= instance.OnCastFireball;
+            @UseWhip.started -= instance.OnUseWhip;
+            @UseWhip.performed -= instance.OnUseWhip;
+            @UseWhip.canceled -= instance.OnUseWhip;
+            @BreakLegs.started -= instance.OnBreakLegs;
+            @BreakLegs.performed -= instance.OnBreakLegs;
+            @BreakLegs.canceled -= instance.OnBreakLegs;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -475,5 +562,8 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         void OnAttackRightTop(InputAction.CallbackContext context);
         void OnAttackLeft(InputAction.CallbackContext context);
         void OnAttackRight(InputAction.CallbackContext context);
+        void OnCastFireball(InputAction.CallbackContext context);
+        void OnUseWhip(InputAction.CallbackContext context);
+        void OnBreakLegs(InputAction.CallbackContext context);
     }
 }

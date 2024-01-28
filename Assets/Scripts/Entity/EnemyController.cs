@@ -1,4 +1,5 @@
-﻿namespace Entity
+﻿
+namespace Entity
 {
     using System;
     using System.Collections;
@@ -8,9 +9,7 @@
     using UnityEngine;
     using Upgrade;
     using Random = UnityEngine.Random;
-    using DG.Tweening;
-    using UnityEngine.UI;
-
+using DG.Tweening;
 
     public class EnemyController : MonoBehaviour
     {
@@ -36,17 +35,18 @@
         private List<Image> healths;
 
         public bool IsDead;
+        private bool hasBrokenLegs = false;
         
         private static readonly int walk = Animator.StringToHash("Walk");
         private static readonly int attack = Animator.StringToHash("Attack");
         private static readonly int die = Animator.StringToHash("Die");
         private static readonly int knockback = Animator.StringToHash("Knockback");
-
+        
         protected void Update()
         {
             if (!initialized)
                 return;
-        
+
             Move();
         }
     
@@ -121,6 +121,17 @@
             DOTween.Sequence().PrependInterval(1f).AppendCallback(() => canMove = true);
         }
 
+        public void BrokenLegs()
+        {
+            if(hasBrokenLegs)
+            {
+                return;
+            }
+
+            speed = speed / 2f;
+
+        }
+
         private bool IsTargetingShield(AttackPosition attackPosition)
         {
             if (attackPosition == AttackPosition.Head && ShieldType == ShieldType.Head)
@@ -174,4 +185,5 @@
             upgradesManager.FinishStage -= KillEmAll;
         }
     }
+using UnityEngine.UI;
 }

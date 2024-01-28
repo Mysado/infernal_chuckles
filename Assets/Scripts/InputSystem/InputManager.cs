@@ -11,6 +11,9 @@ public class InputManager : MonoBehaviour, IInputManager
 
     public event Action<AttackPosition> OnRightAttack;
     public event Action<AttackPosition> OnLeftAttack;
+    public event Action CastFireball;
+    public event Action UseWhip;
+    public event Action BreakLegs;
 
     private InputActions input;
 
@@ -23,6 +26,9 @@ public class InputManager : MonoBehaviour, IInputManager
         input.Player.AttackRightDown.started += _ => OnRightAttack?.Invoke(AttackPosition.Legs);
         input.Player.AttackLeftTop.started += _ => OnLeftAttack?.Invoke(AttackPosition.Head);
         input.Player.AttackRightTop.started += _ => OnRightAttack?.Invoke(AttackPosition.Head);
+        input.Player.CastFireball.started += _ => CastFireball?.Invoke();
+        input.Player.UseWhip.started += _ => UseWhip?.Invoke();
+        input.Player.BreakLegs.started += _ => BreakLegs?.Invoke();
         input.Player.Enable();
     }
 

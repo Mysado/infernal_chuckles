@@ -71,7 +71,7 @@ namespace Upgrade
         }
         private void UpgradeLavaWave()
         {
-            Debug.Log("Lava wave skill unlocked!");
+            
         }
     }
 }
