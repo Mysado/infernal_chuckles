@@ -115,6 +115,7 @@ namespace Entity
                 if (hp <= 0)
                 {
                     soundManager.Play(deathSoundType, transform.position, 1.5f);
+                    shields[(int)ShieldType - 1].SetActive(false);
                     animator.SetTrigger(die);
                     IsDead = true;
                     rigidbody.DOJump(transform.right * 13 - (transform.up * 4), 7, 1, 1.5f)

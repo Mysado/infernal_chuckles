@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using Sisus.Init;
 using TMPro;
@@ -23,7 +24,13 @@ namespace Score
         {
             this.comboController = comboController;
         }
-        
+
+        private void Start()
+        {
+            comboController = FindAnyObjectByType<ComboController>();
+
+        }
+
         public int Score
         {
             get => score;

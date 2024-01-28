@@ -1,3 +1,4 @@
+using System;
 using DevilSystem;
 using Sirenix.OdinInspector;
 using Sisus.Init;
@@ -12,13 +13,20 @@ namespace ExperienceSystem
         
         private int experiencePoints;
         private int currentLevel = 0;
-        private DevilController devilController;
+        public DevilController devilController;
         private bool levelingUp;
         
         protected override void Init(DevilController devilController)
         {
             this.devilController = devilController;
-            this.devilController.DevilController_ResetDevil += LevelUp;
+            
+        }
+
+        private void Start()
+        {
+            devilController = FindAnyObjectByType<DevilController>();
+
+            devilController.DevilController_ResetDevil += LevelUp;
         }
 
         [Button]

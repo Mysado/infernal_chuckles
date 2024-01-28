@@ -15,7 +15,7 @@ namespace Upgrade
         [SerializeField] private CanvasGroup breakLegsIcon;
 
         private UpgradeTrait trait;
-        private ScoreController scoreController;
+        public ScoreController scoreController;
 
         public Action FinishStage;
         public Action StartStage;
@@ -72,7 +72,7 @@ namespace Upgrade
                 default:
                     break;
             }
-
+            playerController.ChangeHP();
             scoreController.DeductScorePoints(trait.buildings[buildingUpgrades[trait.buildingType]].cost);
             buildingUpgrades[trait.buildingType]++;
             StartStage?.Invoke();

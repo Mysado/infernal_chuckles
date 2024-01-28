@@ -19,7 +19,7 @@ namespace Upgrade
         [SerializeField] private Button upgradeButton;
         [SerializeField] private TMP_Text levelText;
 
-        private ScoreController scoreController;
+        public ScoreController scoreController;
         private SoundManager soundManager;
 
         public BuildingType buildingTemplateType;
@@ -35,6 +35,7 @@ namespace Upgrade
         {
             upgradesManager = FindFirstObjectByType<UpgradesManager>();
             soundManager = FindAnyObjectByType<SoundManager>();
+            scoreController = FindAnyObjectByType<ScoreController>();
             buildingTemplateType = buildingTemplate.buildingType;
             name.text = buildingTemplate.buildings[upgradesManager.BuildingUpgrades[buildingTemplateType]].name;
             description.text = buildingTemplate.buildings[upgradesManager.BuildingUpgrades[buildingTemplateType]].description;

@@ -32,7 +32,7 @@ public class Fireball : MonoBehaviour<ComboController, ScoreController>
         {
             other.GetComponent<EnemyController>().TakeDamage(AttackPosition.Body, true);
             comboController.IncreaseComboCounter();
-            scoreController.AddScorePoints(1);
+            scoreController.AddScorePoints(3);
         }
     }
     private void OnBecameInvisible()

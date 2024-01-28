@@ -52,6 +52,9 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 9cbebd1efeec1ab438144efeb17406e9, type: 3}
     - {fileID: 8300000, guid: 4e2e16be27e38b3449e04ef479e30d8f, type: 3}
     - {fileID: 8300000, guid: 01000fbd6cd52cf4b97154573bbda432, type: 3}
+    - {fileID: 8300000, guid: ef851580a930f7948ae2ec990e0fb0b6, type: 3}
+    - {fileID: 8300000, guid: bdb78cc8422d15542afbe1fe7b54f621, type: 3}
+    - {fileID: 8300000, guid: 20f2f83320e06cc4dbdc8e65b714a542, type: 3}
     - {fileID: 8300000, guid: a58d9d4f25e556c439ff65842b5da3ac, type: 3}
     - {fileID: 8300000, guid: 31f458865523aa14b933b6bcc9ef6a79, type: 3}
     - {fileID: 8300000, guid: 8b410034c27466d469dedbbcabac9b71, type: 3}
@@ -120,6 +123,9 @@ MonoBehaviour:
     - Name: $v
       Entry: 7
       Data: 3|UnityEngine.AudioClip[], UnityEngine.AudioModule
+    - Name: 
+      Entry: 12
+      Data: 4
     - Name: 
       Entry: 12
       Data: 2
@@ -247,8 +253,14 @@ MonoBehaviour:
       Entry: 7
       Data: 8|UnityEngine.AudioClip[], UnityEngine.AudioModule
     - Name: 
+      Entry: 10
+      Data: 9
+    - Name: 
       Entry: 12
       Data: 1
+    - Name: 
+      Entry: 10
+      Data: 8
     - Name: 
       Entry: 10
       Data: 8
@@ -275,6 +287,9 @@ MonoBehaviour:
       Data: 1
     - Name: 
       Entry: 10
+      Data: 10
+    - Name: 
+      Entry: 10
       Data: 9
     - Name: 
       Entry: 13
@@ -294,9 +309,6 @@ MonoBehaviour:
     - Name: $v
       Entry: 7
       Data: 10|UnityEngine.AudioClip[], UnityEngine.AudioModule
-    - Name: 
-      Entry: 12
-      Data: 1
     - Name: 
       Entry: 10
       Data: 10
@@ -387,4 +399,5 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  sourcePrefab: {fileID: 860264925276539773, guid: 17306f8c69012324499990dd0386f191, type: 3}
+  sourcePrefab: {fileID: 860264925276539773, guid: 17306f8c69012324499990dd0386f191,
+    type: 3}

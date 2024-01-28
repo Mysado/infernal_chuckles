@@ -23,10 +23,10 @@ public class PlayerController2 : MonoBehaviour<InputManager, ComboController, Sc
     [SerializeField] private CanvasGroup breakLegsIcon;
 
     private int currentHealth;
-    private InputManager inputManager;
-    private ComboController comboController;
-    private SoundManager soundManager;
-    private ScoreController scoreController;
+    public InputManager inputManager;
+    public ComboController comboController;
+    public SoundManager soundManager;
+    public ScoreController scoreController;
 
     private bool canFireBall = true;
     private bool canBreakLegs = true;
@@ -78,7 +78,7 @@ public class PlayerController2 : MonoBehaviour<InputManager, ComboController, Sc
         if (spear.Attack(position))
         {
             comboController.IncreaseComboCounter();
-            scoreController.AddScorePoints(1);
+            scoreController.AddScorePoints(3);
         }        
         else
             comboController.ResetComboCounter();
@@ -90,6 +90,11 @@ public class PlayerController2 : MonoBehaviour<InputManager, ComboController, Sc
             TakeDamage();
     }
 
+    public void ChangeHP()
+    {
+        currentHealth = maxHealth;
+        text.text = "HP: " + currentHealth;
+    }
     public void TakeDamage()
     {
         currentHealth--;
@@ -163,7 +168,7 @@ public class PlayerController2 : MonoBehaviour<InputManager, ComboController, Sc
                         GameObject enemy = raycastHitsSum[i].collider.gameObject;
                         enemy.GetComponent<EnemyController>().TakeDamage(AttackPosition.Body, true);
                         comboController.IncreaseComboCounter();
-                        scoreController.AddScorePoints(1);
+                        scoreController.AddScorePoints(3);
                     }
                 }
                 canUseWhip = false;
