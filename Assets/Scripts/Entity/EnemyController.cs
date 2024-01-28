@@ -27,6 +27,7 @@ namespace Entity
         [SerializeField] protected Animator animator;
         [SerializeField] private GameObject dieParticle;
         [SerializeField] private SoundType deathSoundType;
+        [SerializeField] private GameObject slowEffect; 
 
         public ShieldType ShieldType{ get; private set; }
         public bool CanMove => canMove;
@@ -175,7 +176,10 @@ namespace Entity
             }
 
             speed = speed / 2f;
-            DOTween.Sequence().AppendInterval(duration).AppendCallback(() => speed = speed * 2f);
+            slowEffect.SetActive(true);
+            DOTween.Sequence().AppendInterval(duration).AppendCallback(() => 
+            { speed = speed * 2f; 
+                slowEffect.SetActive(false); });
         }
 
         private bool IsTargetingShield(AttackPosition attackPosition)
