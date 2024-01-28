@@ -6,6 +6,7 @@
         PlayerDamaged,
         ShieldHit,
         EnemyDeath,
-        EnemyDropToLava
+        EnemyDropToLava,
+        PlayerAttack
     }
 }

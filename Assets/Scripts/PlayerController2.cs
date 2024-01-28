@@ -70,6 +70,7 @@ public class PlayerController2 : MonoBehaviour<InputManager, ComboController, Sc
 
     private void Attack(AttackPosition position)
     {
+        soundManager.Play(SoundType.PlayerAttack,transform.position,0.8f);
         if (spear.Attack(position))
         {
             comboController.IncreaseComboCounter();

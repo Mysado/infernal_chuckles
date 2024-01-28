@@ -53,6 +53,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: df4fe83b0009202418f97b11660ecda8, type: 3}
     - {fileID: 8300000, guid: a58d9d4f25e556c439ff65842b5da3ac, type: 3}
     - {fileID: 8300000, guid: 31f458865523aa14b933b6bcc9ef6a79, type: 3}
+    - {fileID: 8300000, guid: 8b410034c27466d469dedbbcabac9b71, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -77,7 +78,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 4
+      Data: 5
     - Name: 
       Entry: 7
       Data: 
@@ -168,6 +169,30 @@ MonoBehaviour:
     - Name: 
       Entry: 10
       Data: 4
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 5
+    - Name: $v
+      Entry: 7
+      Data: 6|UnityEngine.AudioClip[], UnityEngine.AudioModule
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 10
+      Data: 5
     - Name: 
       Entry: 13
       Data: 
