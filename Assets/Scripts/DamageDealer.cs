@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using Entity;
 using UnityEngine;
@@ -30,7 +31,20 @@ public class DamageDealer : MonoBehaviour
             animator.Play("ImpArmature|ImpIStun",0,0);
             return false;
         }
-        animator.Play("ImpArmature|ImpIAttack",0,0);
+
+        switch (attackPosition)
+        {
+            case AttackPosition.Body:
+                animator.Play("ImpArmature|ImpIAttack",0,0);
+                break;
+            case AttackPosition.Legs:
+                animator.Play("ImpArmature|ImpIAttack3",0,0);
+                break;
+            case AttackPosition.Head:
+                animator.Play("ImpArmature|ImpIAttack4",0,0);
+                break;
+        }
+        
         raycastHits = Physics.RaycastAll(transform.position, transform.right,attackRange);
         System.Array.Sort(raycastHits, (x,y) => x.distance.CompareTo(y.distance));
         var enemyDamaged = false;
