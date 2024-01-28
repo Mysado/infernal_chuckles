@@ -3,6 +3,7 @@ using Entity;
 using Score;
 using Sisus.Init;
 using System.Linq;
+using Sound;
 using TMPro;
 using UnityEngine;
 
@@ -20,6 +21,7 @@ public class PlayerController2 : MonoBehaviour<InputManager, ComboController, Sc
     private int currentHealth;
     private InputManager inputManager;
     private ComboController comboController;
+    private SoundManager soundManager;
     private ScoreController scoreController;
     private Sequence sequence;
 
@@ -54,6 +56,7 @@ public class PlayerController2 : MonoBehaviour<InputManager, ComboController, Sc
         inputManager.UseWhip += InputManager_UseWhip;
         inputManager.BreakLegs += InputManager_BreakLegs;
         text.text = "HP = " + currentHealth;
+        soundManager = FindAnyObjectByType<SoundManager>();
     }
 
     private void RotateLeft()
@@ -95,6 +98,10 @@ public class PlayerController2 : MonoBehaviour<InputManager, ComboController, Sc
                 Destroy(enemies[i].gameObject);
             Instantiate(barun, barunSpawnPoint.position, barunSpawnPoint.rotation);
             Destroy(gameObject);
+        }
+        else
+        {
+            soundManager.Play(SoundType.PlayerDamaged,transform.position,1.2f);
         }
     }
     
