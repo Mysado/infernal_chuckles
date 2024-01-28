@@ -87,9 +87,9 @@ GameObject:
   - component: {fileID: 7646455725467234675}
   - component: {fileID: 1190918294793282446}
   - component: {fileID: 4962830415304789668}
-  - component: {fileID: 878516355477131686}
+  - component: {fileID: 8245945084253194241}
   m_Layer: 5
-  m_Name: BuildingPanel 1
+  m_Name: WheelOfTorturePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -169,15 +169,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8848ece492668f64385d89f3578a24da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingTemplate: {fileID: 11400000, guid: 67d50c8be01a4ff46b5459ac9685b0c8, type: 2}
+  buildingTemplate: {fileID: 11400000, guid: a446aa0e00475874facba35da06ce667, type: 2}
   name: {fileID: 8667212066263774929}
   description: {fileID: 8094865227145365921}
   icon: {fileID: 8378528044262091271}
   cost: {fileID: 4104466605840188003}
   upgradeButton: {fileID: 6801286611508853916}
-  buildingTemplateType: 1
+  buildingTemplateType: 2
   upgradesManager: {fileID: 0}
---- !u!114 &878516355477131686
+--- !u!114 &8245945084253194241
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

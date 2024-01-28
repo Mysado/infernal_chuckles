@@ -87,9 +87,9 @@ GameObject:
   - component: {fileID: 7646455725467234675}
   - component: {fileID: 1190918294793282446}
   - component: {fileID: 4962830415304789668}
-  - component: {fileID: 1736871264008651277}
+  - component: {fileID: 485070930131425453}
   m_Layer: 5
-  m_Name: BuildingPanel 3
+  m_Name: SatanThronePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -177,7 +177,7 @@ MonoBehaviour:
   upgradeButton: {fileID: 6801286611508853916}
   buildingTemplateType: 1
   upgradesManager: {fileID: 0}
---- !u!114 &1736871264008651277
+--- !u!114 &485070930131425453
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -4976,7 +4976,7 @@ GameObject:
   - component: {fileID: 1190918294793282446}
   - component: {fileID: 4962830415304789668}
   m_Layer: 5
-  m_Name: BuildingPanel
+  m_Name: LavaPoolPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5057,7 +5057,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8848ece492668f64385d89f3578a24da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingTemplate: {fileID: 11400000, guid: 67d50c8be01a4ff46b5459ac9685b0c8, type: 2}
+  buildingTemplate: {fileID: 11400000, guid: 7ed61b8dd7b464548b6519f8e63d8ef3, type: 2}
   name: {fileID: 8667212066263774929}
   description: {fileID: 8094865227145365921}
   icon: {fileID: 8378528044262091271}
