@@ -21,7 +21,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 6281591c6432d6d4aa490f5abd869600, type: 2}
+  m_Motion: {fileID: 213856876459495052, guid: 8217df0b1cf7afa459307a308dc20fb2, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -61,7 +61,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Armature_Idle1
-  m_Speed: 0.8
+  m_Speed: 0.5
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 7579098817681559176}
@@ -74,7 +74,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: b7341c20074e9674bb24ba68b4938c0c, type: 2}
+  m_Motion: {fileID: 2789604289822619476, guid: 8217df0b1cf7afa459307a308dc20fb2, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
