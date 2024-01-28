@@ -20,10 +20,11 @@ namespace Upgrade
         [SerializeField] private Button upgradeButton;
 
         private ScoreController scoreController;
+        private SoundManager soundManager;
 
         public BuildingType buildingTemplateType;
         public UpgradesManager upgradesManager;
-        private SoundManager soundManager;
+        public int level;
     
         protected override void Init(ScoreController scoreController)
         {
@@ -45,6 +46,8 @@ namespace Upgrade
             {
                 cost.color = Color.green;
             }
+
+            level = buildingTemplate.buildings[upgradesManager.BuildingUpgrades[buildingTemplateType]].level;
 
             upgradeButton.onClick.AddListener(()=>upgradesManager.Upgrade(buildingTemplate));  
             upgradeButton.onClick.AddListener(() => soundManager.Play(SoundType.ButtonClick,transform.position,1.5f));

@@ -2075,7 +2075,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradesRandomizer: {fileID: 740579138}
-  playerController: {fileID: 0}
+  playerController: {fileID: 946413823}
 --- !u!4 &740579140
 Transform:
   m_ObjectHideFlags: 0
@@ -2091,6 +2091,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &946413823 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7570937377753465779, guid: 192d06deea06448429a3ddfa7337d047,
+    type: 3}
+  m_PrefabInstance: {fileID: 2398079372623971385}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fc39347f672e834bae6883480309eee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &995278133 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6941223283144130184, guid: ea939b5d4908e4147847b35eea95e73f,

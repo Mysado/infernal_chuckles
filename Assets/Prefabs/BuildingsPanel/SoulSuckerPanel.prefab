@@ -13,6 +13,10 @@ PrefabInstance:
       value: SoulSuckerPanel
       objectReference: {fileID: 0}
     - target: {fileID: 6305707127434320252, guid: 024c60196fe791e4abdb77965004852f, type: 3}
+      propertyPath: level
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6305707127434320252, guid: 024c60196fe791e4abdb77965004852f, type: 3}
       propertyPath: buildingTemplate
       value: 
       objectReference: {fileID: 11400000, guid: 5379140d85488054dae032eaa7cfd105, type: 2}

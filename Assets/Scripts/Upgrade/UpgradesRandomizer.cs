@@ -10,7 +10,7 @@ public class UpgradesRandomizer : MonoBehaviour
 {
     [SerializeField] private Transform traitPanel;
 
-    [SerializeField] private GameObject[] allBuildingsPool;
+    [SerializeField] private List<GameObject> allBuildingsPool;
     [SerializeField] private UpgradesManager upgradeManager;
 
     private List<GameObject> spawnedTraits;
@@ -24,6 +24,8 @@ public class UpgradesRandomizer : MonoBehaviour
 
     public void SpawnRandomizedUpgrades()
     {
+        RemoveFullUpgradeTrait();
+
         List<int> removedTraitsFromPool = new List<int>();
         for (int i = 0; i < 3; i++)
         {
@@ -41,7 +43,7 @@ public class UpgradesRandomizer : MonoBehaviour
         bool traitIsSpawned = false;
         do
         {
-            rand = Random.Range(0, allBuildingsPool.Length);
+            rand = Random.Range(0, allBuildingsPool.Count);
 
             if (!spawnedTraits.Contains(rand))
             {
@@ -78,5 +80,11 @@ public class UpgradesRandomizer : MonoBehaviour
         }
         spawnedTraits.Clear();
         traitPanel.DOLocalMoveY(819, 1.5f);
+    }
+
+    private void RemoveFullUpgradeTrait()
+    {
+        GameObject trait = allBuildingsPool.FirstOrDefault(x => x.GetComponent<UpgradeTraitDisplay>().level > 3);
+        allBuildingsPool.Remove(trait);
     }
 }

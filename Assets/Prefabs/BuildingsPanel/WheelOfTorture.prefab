@@ -13,6 +13,10 @@ PrefabInstance:
       value: WheelOfTorture
       objectReference: {fileID: 0}
     - target: {fileID: 5331434146883107452, guid: 41b3293522e9fae4d9f4b48de7ace374, type: 3}
+      propertyPath: level
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5331434146883107452, guid: 41b3293522e9fae4d9f4b48de7ace374, type: 3}
       propertyPath: buildingTemplate
       value: 
       objectReference: {fileID: 11400000, guid: a446aa0e00475874facba35da06ce667, type: 2}

@@ -9,6 +9,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 526613118929368475, guid: dfadc7456c770664dab27a2f90d3350d, type: 3}
+      propertyPath: level
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 526613118929368475, guid: dfadc7456c770664dab27a2f90d3350d, type: 3}
       propertyPath: buildingTemplate
       value: 
       objectReference: {fileID: 11400000, guid: 7afbbd7d30a5b9f409a401be5d4c322c, type: 2}

@@ -13,6 +13,10 @@ PrefabInstance:
       value: SatanThronePanel
       objectReference: {fileID: 0}
     - target: {fileID: 4962830415304789668, guid: c5019811ed4cede4b92c5ed7ca9d7eb8, type: 3}
+      propertyPath: level
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4962830415304789668, guid: c5019811ed4cede4b92c5ed7ca9d7eb8, type: 3}
       propertyPath: buildingTemplate
       value: 
       objectReference: {fileID: 11400000, guid: 67d50c8be01a4ff46b5459ac9685b0c8, type: 2}
