@@ -107,6 +107,7 @@ public class PlayerController2 : MonoBehaviour<InputManager, ComboController, Sc
             for (var i = 0; i < enemies.Length; i++)
                 Destroy(enemies[i].gameObject);
             Instantiate(barun, barunSpawnPoint.position, barunSpawnPoint.rotation);
+            soundManager.Play(SoundType.Extinguish, barunSpawnPoint.position, 1f, 1f, true);
             Destroy(gameObject);
         }
         else

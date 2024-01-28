@@ -15,5 +15,6 @@
         BreakLegs,
         BarunDie,
         BadOneDie,
+        Extinguish,
     }
 }

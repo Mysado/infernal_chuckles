@@ -13,7 +13,7 @@ public class SoundManager : SerializedMonoBehaviour
     private readonly List<AudioSource> sourceInUse = new();
     private readonly List<AudioSource> swapper = new();
 
-    public void Play(SoundType soundType, Vector3 position, float pitch, float volume = 1f)
+    public void Play(SoundType soundType, Vector3 position, float pitch, float volume = 1f, bool looped = false)
     {
         var collection = sounds[soundType];
         var sound = collection[Random.Range(0, collection.Length)];
@@ -22,6 +22,7 @@ public class SoundManager : SerializedMonoBehaviour
         source.transform.position = position;
         source.pitch = pitch;
         source.volume = volume;
+        source.loop = looped;
         source.PlayOneShot(sound);
     }
 
