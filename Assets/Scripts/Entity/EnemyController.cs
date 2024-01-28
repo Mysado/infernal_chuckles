@@ -1,4 +1,5 @@
-﻿
+﻿using Sisus.Init;
+
 namespace Entity
 {
     using System;
@@ -9,7 +10,8 @@ namespace Entity
     using UnityEngine;
     using Upgrade;
     using Random = UnityEngine.Random;
-using DG.Tweening;
+    using DG.Tweening;
+    using UnityEngine.UI;
 
     public class EnemyController : MonoBehaviour
     {
@@ -20,6 +22,7 @@ using DG.Tweening;
         [SerializeField] private Sprite healthSprite;
         [SerializeField] protected float speed;
         [SerializeField] protected Animator animator;
+        [SerializeField] private GameObject dieParticle;
 
         public ShieldType ShieldType{ get; private set; }
         public bool CanMove => canMove;
@@ -33,6 +36,7 @@ using DG.Tweening;
         private bool initialized;
         private UpgradesManager upgradesManager;
         private List<Image> healths;
+        private Sequence attackSequence;
 
         public bool IsDead;
         private bool hasBrokenLegs = false;
@@ -41,12 +45,12 @@ using DG.Tweening;
         private static readonly int attack = Animator.StringToHash("Attack");
         private static readonly int die = Animator.StringToHash("Die");
         private static readonly int knockback = Animator.StringToHash("Knockback");
-        
+
         protected void Update()
         {
             if (!initialized)
                 return;
-
+        
             Move();
         }
     
@@ -87,6 +91,8 @@ using DG.Tweening;
         public void TakeDamage(AttackPosition attackPosition)
         {
             animator.SetTrigger(knockback);
+            attackSequence.Kill();
+            attackSequence = null;
             rigidbody.AddForce(transform.right * Random.Range(5,10),ForceMode.Impulse);
             canMove = false;
             DOTween.Sequence().PrependInterval(1f).AppendCallback(() =>
@@ -96,7 +102,7 @@ using DG.Tweening;
                 animator.SetTrigger(walk);
             });
             
-            if (IsTargetingShield(attackPosition))
+            if (!IsTargetingShield(attackPosition))
                 return;
             
             Destroy(healths[0].gameObject);
@@ -111,14 +117,6 @@ using DG.Tweening;
                 experienceController.AddExperience(2);
                 Destroy(gameObject, 2);
             }
-        }
-        
-        public void KnockBack()
-        {
-            animator.SetTrigger(knockback);
-            rigidbody.AddForce(transform.right * Random.Range(5,10),ForceMode.Impulse);
-            canMove = false;
-            DOTween.Sequence().PrependInterval(1f).AppendCallback(() => canMove = true);
         }
 
         public void BrokenLegs()
@@ -146,17 +144,22 @@ using DG.Tweening;
         
         private void Move()
         {
-            if(IsDead || !canMove)
+            if(IsDead || !canMove || attackSequence != null)
                 return;
             
             var distance = targetTransform.position.x - transform.position.x;
 
-            if (Mathf.Abs(distance) <= stopDistance)
+            if (Mathf.Abs(distance) <= stopDistance && attackSequence == null)
             {
                 animator.SetTrigger(attack);
-                target.TakeDamage();
-                IsDead = true;
-                Destroy(gameObject, 1);
+                attackSequence = DOTween.Sequence();
+                attackSequence.AppendInterval(0.6f).AppendCallback(() =>
+                {
+                    target.TakeDamage();
+                    IsDead = true;
+                    Destroy(gameObject, 0.1f);
+                    Instantiate(dieParticle,transform,false);
+                });
             }
             
             transform.position = Vector3.MoveTowards(transform.position, targetTransform.position, speed * Time.deltaTime);
@@ -185,5 +188,4 @@ using DG.Tweening;
             upgradesManager.FinishStage -= KillEmAll;
         }
     }
-using UnityEngine.UI;
 }

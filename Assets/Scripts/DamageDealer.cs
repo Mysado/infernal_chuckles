@@ -12,7 +12,6 @@ public class DamageDealer : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private float attackRange;
-    [SerializeField] private float cooldown;
 
     public bool IsStunned;
     private RaycastHit[] raycastHits;
@@ -26,9 +25,6 @@ public class DamageDealer : MonoBehaviour
 
     public bool Attack(AttackPosition attackPosition)
     {
-        if (cooldownTimer < cooldown)
-            return false;
-        
         if (IsStunned)
         {
             animator.Play("ImpArmature|ImpIStun",0,0);
@@ -36,21 +32,17 @@ public class DamageDealer : MonoBehaviour
         }
         animator.Play("ImpArmature|ImpIAttack",0,0);
         raycastHits = Physics.RaycastAll(transform.position, transform.right,attackRange);
+        System.Array.Sort(raycastHits, (x,y) => x.distance.CompareTo(y.distance));
         var enemyDamaged = false;
         foreach (var hit in raycastHits)
         {
             if (hit.collider.CompareTag("Enemy"))
             {
                 var enemy = hit.collider.GetComponent<EnemyController>();
-                if (enemy.CanMove && !enemyDamaged)
+                if (enemy.CanMove)
                 {
                     DealDamage(enemy, attackPosition);
                     enemyDamaged = true;
-                }
-
-                if (enemy.CanMove && enemyDamaged)
-                {
-                    enemy.KnockBack();
                 }
             }
         }
