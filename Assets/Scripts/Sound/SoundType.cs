@@ -9,6 +9,9 @@
         EnemyDropToLava,
         PlayerAttack,
         ButtonClick,
-        ButtonHover
+        ButtonHover,
+        FireWall,
+        WhipAttack,
+        BreakLegs
     }
 }

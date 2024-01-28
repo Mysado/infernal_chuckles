@@ -128,6 +128,7 @@ public class PlayerController2 : MonoBehaviour<InputManager, ComboController, Sc
         {
             if (canFireBall)
             {
+                soundManager.Play(SoundType.FireWall, transform.position, 0.8f);
                 fireWallIcon.alpha = 0.2f;
                 Instantiate(fireBallPrefab, transform.position, Quaternion.identity);
                 GameObject clone = Instantiate(fireBallPrefab, transform.position, Quaternion.identity);
@@ -144,6 +145,7 @@ public class PlayerController2 : MonoBehaviour<InputManager, ComboController, Sc
         {
             if (canUseWhip)
             {
+                soundManager.Play(SoundType.WhipAttack, transform.position, 0.8f);
                 whipIcon.alpha = 0.2f;
                 RaycastHit[] raycastHitsRight;
                 RaycastHit[] raycastHitsLeft;
@@ -159,7 +161,7 @@ public class PlayerController2 : MonoBehaviour<InputManager, ComboController, Sc
                     if (raycastHitsSum[i].collider.CompareTag("Enemy"))
                     {
                         GameObject enemy = raycastHitsSum[i].collider.gameObject;
-                        Destroy(enemy);
+                        enemy.GetComponent<EnemyController>().TakeDamage(AttackPosition.Body, true);
                         comboController.IncreaseComboCounter();
                         scoreController.AddScorePoints(1);
                     }
@@ -177,6 +179,7 @@ public class PlayerController2 : MonoBehaviour<InputManager, ComboController, Sc
         {
             if (canBreakLegs)
             {
+                soundManager.Play(SoundType.BreakLegs, transform.position, 0.8f);
                 breakLegsIcon.alpha = 0.2f;
                 RaycastHit[] raycastHitsRight;
                 RaycastHit[] raycastHitsLeft;

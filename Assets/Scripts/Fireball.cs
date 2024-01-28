@@ -30,7 +30,7 @@ public class Fireball : MonoBehaviour<ComboController, ScoreController>
     {
         if (other.CompareTag("Enemy"))
         {
-            Destroy(other.gameObject);
+            other.GetComponent<EnemyController>().TakeDamage(AttackPosition.Body, true);
             comboController.IncreaseComboCounter();
             scoreController.AddScorePoints(1);
         }

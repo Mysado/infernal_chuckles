@@ -94,9 +94,36 @@ namespace Entity
             ShieldType = (ShieldType)shieldTypes.GetValue(Random.Range(1, shieldTypes.Length));
             shields[(int)ShieldType - 1].SetActive(true);
         }
-        
-        public void TakeDamage(AttackPosition attackPosition)
+
+        public void TakeDamage(AttackPosition attackPosition, bool instaKill = false)
         {
+            if(instaKill)
+            {
+                rigidbody.AddForce(transform.right * Random.Range(5, 10), ForceMode.Impulse);
+                canMove = false;
+                DOTween.Sequence().PrependInterval(1f).AppendCallback(() =>
+                {
+                    canMove = true;
+                    animator.ResetTrigger(knockback);
+                    animator.SetTrigger(walk);
+                });
+
+                Destroy(healths[0].gameObject);
+                healths.RemoveAt(0);
+                hp = 0;
+                if (hp <= 0)
+                {
+                    soundManager.Play(SoundType.EnemyDeath, transform.position, 1.5f);
+                    animator.SetTrigger(die);
+                    IsDead = true;
+                    rigidbody.DOJump(transform.right * 13 - (transform.up * 4), 7, 1, 1.5f)
+                        .OnComplete(() => soundManager.Play(SoundType.EnemyDropToLava, transform.position, 0.65f));
+                    transform.DOShakeRotation(1.5f);
+                    experienceController.AddExperience(2);
+                    Destroy(gameObject, 2);
+                }
+                
+            }
             if (!IsTargetingShield(attackPosition))
                 return;
             
