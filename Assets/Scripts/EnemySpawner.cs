@@ -51,7 +51,7 @@ public class EnemySpawner : MonoBehaviour<ExperienceController>
         return enemies[Random.Range(0, enemies.Count)];
     }
 
-    private void StopGame()
+    public void StopGame()
     {
         isStoped = true;
     }

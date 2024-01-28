@@ -1,4 +1,5 @@
 using DG.Tweening;
+using Entity;
 using Score;
 using Sisus.Init;
 using TMPro;
@@ -9,6 +10,9 @@ public class PlayerController2 : MonoBehaviour<InputManager, ComboController, Sc
     [SerializeField] private int maxHealth;
     [SerializeField] private DamageDealer spear;
     [SerializeField] private TextMeshProUGUI text;
+    [SerializeField] private GameObject barun;
+    [SerializeField] private Transform barunSpawnPoint;
+    [SerializeField] private EnemySpawner enemySpawner;
     private int currentHealth;
     private InputManager inputManager;
     private ComboController comboController;
@@ -62,7 +66,12 @@ public class PlayerController2 : MonoBehaviour<InputManager, ComboController, Sc
         if (currentHealth <= 0)
         {
             text.text = "GameOver";
-            UnityEditor.EditorApplication.isPlaying = false;
+            enemySpawner.StopGame();
+            var enemies = FindObjectsByType<EnemyController>(FindObjectsSortMode.None);
+            for (var i = 0; i < enemies.Length; i++)
+                Destroy(enemies[i].gameObject);
+            Instantiate(barun, barunSpawnPoint.position, barunSpawnPoint.rotation);
+            Destroy(gameObject);
         }
     }
     
