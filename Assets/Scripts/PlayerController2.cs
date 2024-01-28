@@ -21,6 +21,7 @@ public class PlayerController2 : MonoBehaviour<InputManager, ComboController, Sc
     [SerializeField] private CanvasGroup fireWallIcon;
     [SerializeField] private CanvasGroup whipIcon;
     [SerializeField] private CanvasGroup breakLegsIcon;
+    [SerializeField] private GameObject whipEffect;
 
     private int currentHealth;
     public InputManager inputManager;
@@ -151,6 +152,7 @@ public class PlayerController2 : MonoBehaviour<InputManager, ComboController, Sc
         {
             if (canUseWhip)
             {
+                Instantiate(whipEffect, transform.position, Quaternion.identity);
                 soundManager.Play(SoundType.WhipAttack, transform.position, 0.8f);
                 whipIcon.alpha = 0.2f;
                 RaycastHit[] raycastHitsRight;

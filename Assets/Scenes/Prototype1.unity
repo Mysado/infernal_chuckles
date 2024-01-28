@@ -10307,6 +10307,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1503092818}
     - target: {fileID: 7570937377753465779, guid: 192d06deea06448429a3ddfa7337d047, type: 3}
+      propertyPath: whipEffect
+      value: 
+      objectReference: {fileID: 5297702314561790051, guid: 2c5b8e5cac4221d42964ee0f4d259c96, type: 3}
+    - target: {fileID: 7570937377753465779, guid: 192d06deea06448429a3ddfa7337d047, type: 3}
       propertyPath: hasFireBall
       value: 0
       objectReference: {fileID: 0}
