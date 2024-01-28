@@ -37,7 +37,8 @@ public class EnemySpawner : MonoBehaviour<ExperienceController>
             {
                 timer = 0;
                 var point = spawnPoints[Random.Range(0, spawnPoints.Count)];
-                var newEnemy = Instantiate(GetEnemyType(), point.position + new Vector3(Random.Range(spawnRange, -spawnRange), 0, 0), Quaternion.identity);
+                var newEnemy = Instantiate(GetEnemyType(),
+                    point.position + new Vector3(Random.Range(spawnRange, -spawnRange), 0, 0), Quaternion.identity);
                 var speed = Random.Range(4, Mathf.CeilToInt(spawnCounter * 0.1f));
                 if (speed < 2)
                     speed = 2;

@@ -13,6 +13,7 @@ namespace DevilSystem
         [SerializeField] private Devil devil;
         [SerializeField] private UpgradesManager upgradesManager;
         [SerializeField] private ParticleSystem fireBoomParticles;
+        [SerializeField] private AudioSource devilLaugh;
         public event Action DevilController_ResetDevil;
 
         private void Awake()
@@ -35,13 +36,12 @@ namespace DevilSystem
         private void MakeBoom()
         {
             fireBoomParticles.Play();
-            //kill all enemies and make them not spawn for duration of laugh
         }
 
         private void StartLaugh()
         {
             devil.StartLaughAnim();
-            //Open Level Up Panel on Anim end
+            devilLaugh.Play();
         }
 
         private void OpenUpgradeMenu()
@@ -52,6 +52,7 @@ namespace DevilSystem
 
         private void ResetDevil()
         {
+            devilLaugh.Stop();
             DevilController_ResetDevil?.Invoke();
         }
 
