@@ -12,6 +12,8 @@
         ButtonHover,
         FireWall,
         WhipAttack,
-        BreakLegs
+        BreakLegs,
+        BarunDie,
+        BadOneDie,
     }
 }

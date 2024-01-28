@@ -26,6 +26,7 @@ namespace Entity
         [SerializeField] protected float speed;
         [SerializeField] protected Animator animator;
         [SerializeField] private GameObject dieParticle;
+        [SerializeField] private SoundType deathSoundType;
 
         public ShieldType ShieldType{ get; private set; }
         public bool CanMove => canMove;
@@ -113,7 +114,7 @@ namespace Entity
                 hp = 0;
                 if (hp <= 0)
                 {
-                    soundManager.Play(SoundType.EnemyDeath, transform.position, 1.5f);
+                    soundManager.Play(deathSoundType, transform.position, 1.5f);
                     animator.SetTrigger(die);
                     IsDead = true;
                     rigidbody.DOJump(transform.right * 13 - (transform.up * 4), 7, 1, 1.5f)
@@ -144,7 +145,7 @@ namespace Entity
             hp--;
             if (hp <= 0)
             {
-                soundManager.Play(SoundType.EnemyDeath,transform.position,1.5f);
+                soundManager.Play(deathSoundType,transform.position,1.5f);
                 animator.SetTrigger(die);
                 IsDead = true; 
                 rigidbody.DOJump(transform.right * 13 - (transform.up * 4), 7, 1, 1.5f)

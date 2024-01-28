@@ -359,6 +359,10 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 841163538872682345}
+    - target: {fileID: 4546058177882167821, guid: e0255456c7c64a247a04bea7337da39b, type: 3}
+      propertyPath: deathSoundType
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
