@@ -22,25 +22,43 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   buildings:
-  - name: Satan Throne
-    description: sd
+  - name: Satan Throne (I)
+    description: Increase gaining points from killing enemy.
     icon: {fileID: 0}
-    cost: 0
+    cost: 20
     levelUpgrade: 0
-    pointsModifier: 0
+    pointsModifier: 2
+    fireBallCooldown: 0
+    whipCooldown: 0
+    breakingLegsCooldown: 0
+    whipInstaKillValue: 0
+    speedReduction: 0
+    increaseMaxHP: 0
     level: 0
-  - name: Satan Throne
-    description: sd
+  - name: Satan Throne (II)
+    description: Increase gaining points from killing enemy.
     icon: {fileID: 0}
-    cost: 0
+    cost: 80
     levelUpgrade: 0
-    pointsModifier: 0
+    pointsModifier: 3
+    fireBallCooldown: 0
+    whipCooldown: 0
+    breakingLegsCooldown: 0
+    whipInstaKillValue: 0
+    speedReduction: 0
+    increaseMaxHP: 0
     level: 0
-  - name: Satan Throne
-    description: sd
+  - name: Satan Throne (III)
+    description: Increase gaining points from killing enemy.
     icon: {fileID: 0}
-    cost: 0
+    cost: 130
     levelUpgrade: 0
-    pointsModifier: 0
+    pointsModifier: 5
+    fireBallCooldown: 0
+    whipCooldown: 0
+    breakingLegsCooldown: 0
+    whipInstaKillValue: 0
+    speedReduction: 0
+    increaseMaxHP: 0
     level: 0
   buildingType: 1

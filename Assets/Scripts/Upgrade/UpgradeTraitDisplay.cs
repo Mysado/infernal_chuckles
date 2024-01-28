@@ -16,11 +16,9 @@ namespace Upgrade
         [SerializeField] private TMP_Text description;
         [SerializeField] private Image icon;
         [SerializeField] private TMP_Text cost;
-        [SerializeField] private TMP_Text levelUpgrade;
         [SerializeField] private Button upgradeButton;
 
         private ScoreController scoreController;
-        //private RectTransform transform;
 
         public BuildingType buildingTemplateType;
         public UpgradesManager upgradesManager;
@@ -39,7 +37,6 @@ namespace Upgrade
             icon.sprite = buildingTemplate.buildings[upgradesManager.BuildingUpgrades[buildingTemplateType]].icon;
             cost.text = buildingTemplate.buildings[upgradesManager.BuildingUpgrades[buildingTemplateType]].cost.ToString();
             cost.color = Color.red;
-            levelUpgrade.text = buildingTemplate.buildings[upgradesManager.BuildingUpgrades[buildingTemplateType]].levelUpgrade.ToString();
 
             if(scoreController.Score >= buildingTemplate.buildings[upgradesManager.BuildingUpgrades[buildingTemplateType]].cost)
             {

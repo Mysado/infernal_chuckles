@@ -30,5 +30,4 @@ public class Building
     public int whipInstaKillValue;
     public int speedReduction;
     public int increaseMaxHP;
-    public int level;
 }

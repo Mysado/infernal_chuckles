@@ -22,25 +22,43 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   buildings:
-  - name: Wheel of Torture
-    description: asd
+  - name: Wheel of Torture (I)
+    description: Break your enemies legs to slow them down!
     icon: {fileID: 0}
-    cost: 0
+    cost: 20
     levelUpgrade: 0
     pointsModifier: 0
+    fireBallCooldown: 0
+    whipCooldown: 0
+    breakingLegsCooldown: 15
+    whipInstaKillValue: 0
+    speedReduction: 0
+    increaseMaxHP: 0
     level: 0
-  - name: Wheel of Torture
-    description: asd
+  - name: Wheel of Torture (II)
+    description: Decrease ability cooldown.
     icon: {fileID: 0}
-    cost: 0
+    cost: 60
     levelUpgrade: 0
     pointsModifier: 0
+    fireBallCooldown: 0
+    whipCooldown: 0
+    breakingLegsCooldown: 13
+    whipInstaKillValue: 0
+    speedReduction: 0
+    increaseMaxHP: 0
     level: 0
-  - name: Wheel of Torture
-    description: sad
+  - name: Wheel of Torture (III)
+    description: Decrease ability cooldown.
     icon: {fileID: 0}
-    cost: 0
+    cost: 130
     levelUpgrade: 0
-    pointsModifier: 0
+    pointsModifier: 1
+    fireBallCooldown: 0
+    whipCooldown: 0
+    breakingLegsCooldown: 10
+    whipInstaKillValue: 0
+    speedReduction: 0
+    increaseMaxHP: 0
     level: 0
   buildingType: 2

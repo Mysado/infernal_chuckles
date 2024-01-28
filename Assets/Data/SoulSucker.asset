@@ -22,25 +22,43 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   buildings:
-  - name: Soul Sucker
-    description: asfa
+  - name: Soul Sucker (I)
+    description: Increase your max health.
     icon: {fileID: 0}
-    cost: 0
+    cost: 20
     levelUpgrade: 0
     pointsModifier: 0
+    fireBallCooldown: 0
+    whipCooldown: 0
+    breakingLegsCooldown: 0
+    whipInstaKillValue: 0
+    speedReduction: 0
+    increaseMaxHP: 11
     level: 0
-  - name: Soul Sucker
-    description: asf
+  - name: Soul Sucker (II)
+    description: Increase your max health.
     icon: {fileID: 0}
-    cost: 0
+    cost: 40
     levelUpgrade: 0
     pointsModifier: 0
+    fireBallCooldown: 0
+    whipCooldown: 0
+    breakingLegsCooldown: 0
+    whipInstaKillValue: 0
+    speedReduction: 0
+    increaseMaxHP: 13
     level: 0
-  - name: Soul Sucker
-    description: asf
+  - name: Soul Sucker (III)
+    description: Increase your max health.
     icon: {fileID: 0}
-    cost: 0
+    cost: 100
     levelUpgrade: 0
     pointsModifier: 0
+    fireBallCooldown: 0
+    whipCooldown: 0
+    breakingLegsCooldown: 0
+    whipInstaKillValue: 0
+    speedReduction: 0
+    increaseMaxHP: 15
     level: 0
   buildingType: 3
