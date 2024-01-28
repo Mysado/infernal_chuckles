@@ -7,6 +7,8 @@
         ShieldHit,
         EnemyDeath,
         EnemyDropToLava,
-        PlayerAttack
+        PlayerAttack,
+        ButtonClick,
+        ButtonHover
     }
 }
