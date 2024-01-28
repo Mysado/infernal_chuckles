@@ -23,7 +23,13 @@ public class SoundManager : SerializedMonoBehaviour
         source.pitch = pitch;
         source.volume = volume;
         source.loop = looped;
-        source.PlayOneShot(sound);
+        if(looped)
+        {
+            source.clip = sound;
+            source.Play();
+        }
+        else
+            source.PlayOneShot(sound, volume);
     }
 
     private AudioSource GetSource()
