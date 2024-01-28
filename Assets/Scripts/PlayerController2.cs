@@ -86,4 +86,10 @@ public class PlayerController2 : MonoBehaviour<InputManager, ComboController, Sc
         RotateLeft();
         Attack(attackPosition);
     }
+
+    private void OnDestroy()
+    {
+        inputManager.OnLeftAttack -= InputManager_OnLeftAttack;
+        inputManager.OnRightAttack -= InputManager_OnRightAttack;
+    }
 }
