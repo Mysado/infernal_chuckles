@@ -22,7 +22,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   buildings:
-  - name: Whipping Torture (I)
+  - name: Whipping Torture
     description: Grab your enemies and toss them right into the pot!
     icon: {fileID: 0}
     cost: 30
@@ -31,11 +31,12 @@ MonoBehaviour:
     fireBallCooldown: 0
     whipCooldown: 18
     breakingLegsCooldown: 0
+    breakingLegsDuration: 0
     whipInstaKillValue: 1
     speedReduction: 0
     increaseMaxHP: 0
-    level: 0
-  - name: Whipping Torture (II)
+    level: 1
+  - name: Whipping Torture
     description: Increase amount of enemies you can kill in the same time.
     icon: {fileID: 0}
     cost: 70
@@ -44,11 +45,12 @@ MonoBehaviour:
     fireBallCooldown: 0
     whipCooldown: 18
     breakingLegsCooldown: 0
+    breakingLegsDuration: 0
     whipInstaKillValue: 2
     speedReduction: 0
     increaseMaxHP: 0
-    level: 0
-  - name: Whipping Torture (III)
+    level: 2
+  - name: Whipping Torture
     description: Decrease ability cooldown and increase amount of enemies you can
       kill in the same time.
     icon: {fileID: 0}
@@ -58,8 +60,9 @@ MonoBehaviour:
     fireBallCooldown: 0
     whipCooldown: 0
     breakingLegsCooldown: 15
+    breakingLegsDuration: 0
     whipInstaKillValue: 3
     speedReduction: 0
     increaseMaxHP: 0
-    level: 0
+    level: 3
   buildingType: 4

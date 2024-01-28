@@ -20,13 +20,13 @@ public class Building
 {
     public string name;
     public string description;
-    public Sprite icon;
     public int cost;
     public int levelUpgrade;
     public int pointsModifier;
     public float fireBallCooldown;
     public float whipCooldown;
     public float breakingLegsCooldown;
+    public int breakingLegsDuration;
     public int whipInstaKillValue;
     public int speedReduction;
     public int increaseMaxHP;

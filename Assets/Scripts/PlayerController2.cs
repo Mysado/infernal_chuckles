@@ -33,6 +33,7 @@ public class PlayerController2 : MonoBehaviour<InputManager, ComboController, Sc
     public float breakLegsCooldown;
     public float whipCooldown;
     public int instaKillValue;
+    public int breakLegsDuration;
     public int MaxHealth { set => maxHealth = value; }
 
     public bool hasFireBall = false;
@@ -182,7 +183,7 @@ public class PlayerController2 : MonoBehaviour<InputManager, ComboController, Sc
                     if (hit.collider.CompareTag("Enemy"))
                     {
                         EnemyController enemy = hit.collider.gameObject.GetComponent<EnemyController>();
-                        enemy.BrokenLegs();
+                        enemy.BrokenLegs(breakLegsDuration);
                     }
                 }
                 canBreakLegs = false;

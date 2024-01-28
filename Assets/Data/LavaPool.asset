@@ -22,7 +22,7 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   buildings:
-  - name: Lava Pool (I)
+  - name: Lava Pool
     description: Use and burn your enemies with fire wall!
     icon: {fileID: 0}
     cost: 20
@@ -31,11 +31,12 @@ MonoBehaviour:
     fireBallCooldown: 20
     whipCooldown: 0
     breakingLegsCooldown: 0
+    breakingLegsDuration: 0
     whipInstaKillValue: 0
     speedReduction: 0
     increaseMaxHP: 0
-    level: 0
-  - name: Lava Pool (II)
+    level: 1
+  - name: Lava Pool
     description: Cooldown is decreased.
     icon: {fileID: 0}
     cost: 60
@@ -44,11 +45,12 @@ MonoBehaviour:
     fireBallCooldown: 18
     whipCooldown: 0
     breakingLegsCooldown: 0
+    breakingLegsDuration: 0
     whipInstaKillValue: 0
     speedReduction: 0
     increaseMaxHP: 0
-    level: 0
-  - name: Lava Pool (III)
+    level: 2
+  - name: Lava Pool
     description: Cooldown is decreased.
     icon: {fileID: 0}
     cost: 100
@@ -57,8 +59,9 @@ MonoBehaviour:
     fireBallCooldown: 15
     whipCooldown: 0
     breakingLegsCooldown: 0
+    breakingLegsDuration: 0
     whipInstaKillValue: 0
     speedReduction: 0
     increaseMaxHP: 0
-    level: 0
+    level: 3
   buildingType: 0

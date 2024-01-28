@@ -132,7 +132,7 @@ namespace Entity
             }
         }
 
-        public void BrokenLegs()
+        public void BrokenLegs(int duration)
         {
             if(hasBrokenLegs)
             {
@@ -140,7 +140,7 @@ namespace Entity
             }
 
             speed = speed / 2f;
-
+            DOTween.Sequence().AppendInterval(duration).AppendCallback(() => speed = speed * 2f);
         }
 
         private bool IsTargetingShield(AttackPosition attackPosition)

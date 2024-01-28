@@ -15,9 +15,9 @@ namespace Upgrade
 
         [SerializeField] private TMP_Text name;
         [SerializeField] private TMP_Text description;
-        [SerializeField] private Image icon;
         [SerializeField] private TMP_Text cost;
         [SerializeField] private Button upgradeButton;
+        [SerializeField] private TMP_Text levelText;
 
         private ScoreController scoreController;
         private SoundManager soundManager;
@@ -38,7 +38,6 @@ namespace Upgrade
             buildingTemplateType = buildingTemplate.buildingType;
             name.text = buildingTemplate.buildings[upgradesManager.BuildingUpgrades[buildingTemplateType]].name;
             description.text = buildingTemplate.buildings[upgradesManager.BuildingUpgrades[buildingTemplateType]].description;
-            icon.sprite = buildingTemplate.buildings[upgradesManager.BuildingUpgrades[buildingTemplateType]].icon;
             cost.text = buildingTemplate.buildings[upgradesManager.BuildingUpgrades[buildingTemplateType]].cost.ToString();
             cost.color = Color.red;
 
@@ -48,6 +47,17 @@ namespace Upgrade
             }
 
             level = buildingTemplate.buildings[upgradesManager.BuildingUpgrades[buildingTemplateType]].level;
+            if(level == 1)
+            {
+                levelText.text = "I";
+            }else if(level == 2)
+            {
+                levelText.text = "II";
+            }
+            else
+            {
+                levelText.text = "III";
+            }
 
             upgradeButton.onClick.AddListener(()=>upgradesManager.Upgrade(buildingTemplate));  
             upgradeButton.onClick.AddListener(() => soundManager.Play(SoundType.ButtonClick,transform.position,1.5f));
