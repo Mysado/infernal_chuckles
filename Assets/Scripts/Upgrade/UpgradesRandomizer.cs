@@ -65,7 +65,9 @@ public class UpgradesRandomizer : MonoBehaviour
     }
     private void ShowPanel()
     {
-        traitPanel.DOLocalMoveY(0, 1.5f).OnComplete(() => SpawnRandomizedUpgrades());
+        DOTween.Sequence().AppendInterval(3).AppendCallback(() =>
+            traitPanel.DOLocalMoveY(0, 1.5f).OnComplete(() => SpawnRandomizedUpgrades()));
+
 
     }
     public void HidePanel()

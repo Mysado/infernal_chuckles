@@ -1,4 +1,5 @@
-﻿using Sisus.Init;
+﻿using DevilSystem;
+using Sisus.Init;
 
 namespace Entity
 {
@@ -67,8 +68,10 @@ namespace Entity
             upgradesManager.FinishStage += KillEmAll;
         }
 
-        public void Initialize(ExperienceController experienceController, bool shielded)
+        public void Initialize(ExperienceController experienceController, bool shielded, int health, int speed)
         {
+            hp = Mathf.Min(4,health);
+            this.speed = Mathf.Min(10, speed);
             healths = new List<Image>();
             this.experienceController = experienceController;
             transform.rotation = Quaternion.Euler(0, transform.position.x > targetTransform.position.x ? 0 : 180, 0);
@@ -91,6 +94,9 @@ namespace Entity
         
         public void TakeDamage(AttackPosition attackPosition)
         {
+            if (!IsTargetingShield(attackPosition))
+                return;
+            
             animator.SetTrigger(knockback);
             attackSequence.Kill();
             attackSequence = null;
@@ -102,9 +108,6 @@ namespace Entity
                 animator.ResetTrigger(knockback);
                 animator.SetTrigger(walk);
             });
-            
-            if (!IsTargetingShield(attackPosition))
-                return;
             
             Destroy(healths[0].gameObject);
             healths.RemoveAt(0);

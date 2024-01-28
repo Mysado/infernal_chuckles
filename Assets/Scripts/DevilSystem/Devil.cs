@@ -26,8 +26,9 @@ namespace DevilSystem
 
         public void LerpPosition(float percentage)
         {
+            devilSequence.Complete();
             var newPosition = Vector3.Lerp(initialPosition.position, endPosition.position, percentage);
-            devilSequence.Insert(0,transform.DOMove(newPosition, lerpDuration));
+            devilSequence = DOTween.Sequence().AppendCallback(() => transform.DOMove(newPosition, lerpDuration));
         }
 
         public void StartLaughAnim()
